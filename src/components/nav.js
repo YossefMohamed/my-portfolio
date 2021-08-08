@@ -59,7 +59,7 @@ const FlexContainer = styled.div`
   align-items: center;
   position: relative;
   padding: 0.5rem 1rem;
-  transition: all 300ms ease-in;
+  transition: all 100ms ease-in;
 `;
 const Logo = styled.div`
   font-size: 2rem;

@@ -14,7 +14,7 @@ function About() {
         </Brief>
         <Hello>
           I Love Working With Modern Technologies, Building Awesome Projects. I
-          Prefer Minimalistic.
+          Prefer Write Your Functionality Requirements..
         </Hello>
         <Button>Download my resume</Button>
       </div>
@@ -51,10 +51,11 @@ export const Button = styled.button`
   outline: 0;
   margin-top: 2rem;
   font-size: 1.25rem;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   padding: 0.5rem 1rem;
   border: 2px solid ${colors.main};
   background-color: ${colors.main};
+  box-shadow: 4px 4px ${colors.secondary};
   &:hover {
     color: ${colors.main};
 
