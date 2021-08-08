@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled from "styled-components";
+import About from "./components/about";
+import Nav from "./components/nav";
+import "./app.css";
+function App(props) {
+  React.useEffect(() => {
+    // console.log(props);
+    window.scrollTo(0, 0);
+  }, [props.match]);
 
-function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Nav />
+      <About />
+    </Container>
   );
 }
 
+const Container = styled.div`
+  padding: 0rem 9rem;
+  @media (max-width: 768px) {
+    padding: 0rem 1rem;
+  }
+`;
 export default App;
