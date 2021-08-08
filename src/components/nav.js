@@ -64,7 +64,7 @@ const FlexContainer = styled.div`
 const Logo = styled.div`
   font-size: 2rem;
   font-weight: bolder;
-  font-family: "Montserrat", "Arial Narrow", Arial, sans-serif;
+  font-family: "Sofia", sans-serif;
   width: 20%;
 `;
 const NavList = styled.ul`
