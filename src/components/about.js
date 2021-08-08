@@ -10,7 +10,7 @@ function About() {
         </Hello>
         <Brief>
           I'm MERN stack Deveoloper
-          <br /> I'm Building webapps, brands, and experience
+          <br /> I'm Building webapps, brands, and experience...
         </Brief>
         <Hello>
           I Love Working With Modern Technologies, Building Awesome Projects. I
