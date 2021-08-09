@@ -8,6 +8,7 @@ import Experiance from "./components/experiance";
 import Skills from "./components/skills";
 import Projects from "./components/projects";
 import Contact from "./components/contact";
+import Footer from "./components/footer";
 function App(props) {
   React.useEffect(() => {
     // console.log(props);
@@ -22,6 +23,7 @@ function App(props) {
       <Skills />
       <Projects />
       <Contact />
+      <Footer />
     </Container>
   );
 }

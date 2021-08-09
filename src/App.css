@@ -11,6 +11,9 @@ body {
 /* html {
   font-size: 13px;
 } */
+button {
+  outline: 0 !important;
+}
 .loader {
   display: flex;
   justify-content: center;

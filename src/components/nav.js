@@ -5,10 +5,23 @@ import sizes from "../util/sizes";
 
 function Nav() {
   const [navCheck, setNavCheck] = React.useState(0);
-  console.log(navCheck);
+
+  const [scrolling, setScrolling] = React.useState(false);
+  const [scrollTop, setScrollTop] = React.useState(0);
+  const [pageHeight, setPageHeight] = React.useState(
+    document.querySelector("body").innerWidth
+  );
+  console.log(pageHeight);
+  const onScroll = (e) => {
+    setScrollTop(e.target.documentElement.scrollTop);
+    setScrolling(e.target.documentElement.scrollTop > scrollTop);
+  };
+  React.useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+  }, []);
   return (
     <FlexContainer>
-      <Logo>YM.</Logo>
+      <Logo>YM..</Logo>
       <NavList clicked={navCheck}>
         <NavListItem>
           <span>

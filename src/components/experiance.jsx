@@ -100,6 +100,7 @@ const ScreenContainer = styled.div`
 `;
 const FlexContainer = styled.div`
   display: flex;
+
   margin: 5rem auto 2rem;
   flex-direction: column;
   justify-content: center;
@@ -127,9 +128,10 @@ const FlexContainer = styled.div`
       width: 3rem;
       transform: translate(-55%, -50%);
       background-color: ${colors.light};
+      filter: brightness(75%);
+
       top: 0;
       left: 0;
-      border: 2px solid ${colors.main};
       border-radius: 50%;
     }
     .xp-title {
@@ -152,6 +154,7 @@ const FlexContainer = styled.div`
 
 const BackgroundEffect = styled.div`
   display: flex;
+
   position: relative;
   .background-effect {
     position: absolute;
