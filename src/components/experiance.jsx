@@ -87,6 +87,7 @@ const ScreenContainer = styled.div`
     color: ${colors.light};
     text-align: left;
     width: 60%;
+    transform: translateX(-1.5rem);
     margin: 0 auto;
     @media (max-width: 768px) {
       width: 90%;
@@ -116,7 +117,7 @@ const FlexContainer = styled.div`
     justify-content: space-evenly;
     flex-direction: column;
     color: ${colors.light};
-    border-left: 5px solid ${colors.main};
+    border-left: 5px solid ${colors.light};
     padding: 0rem 3rem 2.5rem;
     position: relative;
     &::before {
@@ -128,7 +129,7 @@ const FlexContainer = styled.div`
       background-color: ${colors.light};
       top: 0;
       left: 0;
-      border: 3px solid ${colors.main};
+      border: 2px solid ${colors.main};
       border-radius: 50%;
     }
     .xp-title {

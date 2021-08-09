@@ -81,11 +81,14 @@ const ProjectItem = styled.div`
   .project-title {
     padding-left: 2rem;
     font-size: ${sizes.big};
+    font-weight: bold;
     color: ${colors.main};
     margin-bottom: 2rem;
     align-self: center;
-    border-left: 13px solid ${colors.secondary};
+    border-left: 10px solid ${colors.secondary};
     span {
+      font-weight: lighter;
+
       display: block;
       color: gray;
       font-size: ${sizes.medium};
