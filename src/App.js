@@ -3,6 +3,10 @@ import styled from "styled-components";
 import About from "./components/about";
 import Nav from "./components/nav";
 import "./app.css";
+import "./app.css";
+import Experiance from "./components/experiance";
+import Skills from "./components/skills";
+import Projects from "./components/projects";
 function App(props) {
   React.useEffect(() => {
     // console.log(props);
@@ -13,6 +17,9 @@ function App(props) {
     <Container>
       <Nav />
       <About />
+      <Experiance />
+      <Skills />
+      <Projects />
     </Container>
   );
 }

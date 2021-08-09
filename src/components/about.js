@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import sizes from "../util/sizes";
 import colors from "./../util/colors";
 function About() {
   return (
@@ -23,7 +24,8 @@ function About() {
 }
 
 const ScreenDiv = styled.div`
-  min-height: 80vh;
+  min-height: 70vh;
+  background-color: ${colors.light};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,15 +35,15 @@ const ScreenDiv = styled.div`
   }
 `;
 const Hello = styled.div`
-  font-size: 1.5rem;
+  font-size: ${sizes.medium};
   span {
     color: ${colors.secondary};
     font-weight: bold;
   }
 `;
 const Brief = styled.div`
-  font-size: 3rem;
-  font-size: bolder;
+  font-size: ${sizes.huge};
+  font-weight: bolder;
   margin: 1rem 0 0.5rem;
   color: black;
 `;
@@ -50,14 +52,14 @@ export const Button = styled.button`
   border: 0;
   outline: 0;
   margin-top: 2rem;
-  font-size: 1.25rem;
+  font-size: ${sizes.medium};
   /* border-radius: 5px; */
   padding: 0.5rem 1rem;
-  border: 2px solid ${colors.main};
-  background-color: ${colors.main};
-  box-shadow: 4px 4px ${colors.secondary};
+  border: 2px solid ${colors.secondary};
+  background-color: ${colors.secondary};
+  box-shadow: 6px 6px ${colors.main};
   &:hover {
-    color: ${colors.main};
+    color: ${colors.secondary};
 
     background-color: ${colors.light};
   }

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import colors from "../util/colors";
+import sizes from "../util/sizes";
 
 function Nav() {
   const [navCheck, setNavCheck] = React.useState(0);
@@ -44,7 +45,7 @@ function Nav() {
 }
 
 const NavCheck = styled.div`
-  font-size: 1.5rem;
+  font-size: ${sizes.medium};
   display: none;
   @media (max-width: 768px) {
     display: block;
@@ -52,17 +53,20 @@ const NavCheck = styled.div`
 `;
 const FlexContainer = styled.div`
   display: flex;
+  position: sticky;
+  top: 0;
+  background-color: ${colors.light};
   border-bottom: 5px solid ${colors.secondary};
-  box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.2);
   color: black;
+  z-index: 55;
   justify-content: space-between;
   align-items: center;
-  position: relative;
   padding: 0.5rem 1rem;
   transition: all 100ms ease-in;
 `;
 const Logo = styled.div`
-  font-size: 2rem;
+  font-size: ${sizes.big};
   font-weight: bolder;
   font-family: "Sofia", sans-serif;
   width: 20%;
@@ -71,7 +75,7 @@ const NavList = styled.ul`
   align-items: center;
   list-style: none;
   padding: 0;
-  font-size: 1rem;
+  font-size: ${sizes.small};
   display: flex !important;
   height: 100%;
   margin: 0;
