@@ -55,11 +55,12 @@ export const Button = styled.button`
   font-size: ${sizes.medium};
   /* border-radius: 5px; */
   padding: 0.5rem 1rem;
-  border: 3px solid ${colors.secondary};
+  border: 3px solid ${colors.main};
   background-color: ${colors.secondary};
   box-shadow: 10px 10px ${colors.main};
   &:hover {
     color: ${colors.secondary};
+    border: 3px solid ${colors.secondary};
 
     background-color: ${colors.light};
   }

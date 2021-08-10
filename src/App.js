@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import About from "./components/about";
 import Nav from "./components/nav";
-import "./app.css";
-import "./app.css";
-import Experiance from "./components/experiance";
-import Skills from "./components/skills";
-import Projects from "./components/projects";
-import Contact from "./components/contact";
+import "./App.css";
 import Footer from "./components/footer";
+import Home from "./pages/home";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import NotFound from "./pages/notFount";
+import Blog from "./pages/blog.jsx";
+import PostPage from "./pages/post";
+
 function App(props) {
   React.useEffect(() => {
     // console.log(props);
@@ -17,20 +17,24 @@ function App(props) {
 
   return (
     <Container>
-      <Nav />
-      <About />
-      <Experiance />
-      <Skills />
-      <Projects />
-      <Contact />
-      <Footer />
+      <BrowserRouter>
+        <Nav />
+
+        <Switch>
+          <Route path="/" component={Home} exact />
+          <Route path="/post/:id" component={PostPage} exact />
+          <Route path="/blog" component={Blog} exact></Route>
+          <Route path="" component={NotFound} exact />
+        </Switch>
+        <Footer />
+      </BrowserRouter>
     </Container>
   );
 }
 
 const Container = styled.div`
-  padding: 0rem 9rem;
-  @media (max-width: 768px) {
+  padding: 0rem 7rem;
+  @media (max-width: 868px) {
     padding: 0rem 1rem;
   }
 `;

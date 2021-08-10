@@ -10,7 +10,7 @@ function Skills() {
       <FlexContainer>
         <SkillItem>
           <h2>
-            <i class="fab fa-html5"></i>
+            <i className="fab fa-html5"></i>
           </h2>
           <div className="skill-content">
             Lorem Ipsum is simply dummy teext of the printing and typesetting
@@ -20,7 +20,7 @@ function Skills() {
         </SkillItem>
         <SkillItem>
           <h2>
-            <i class="fab fa-css3-alt"></i>
+            <i className="fab fa-css3-alt"></i>
           </h2>
           <div className="skill-content">
             Lorem Ipsum is simply dummy teext of the printing and typesetting
@@ -30,7 +30,7 @@ function Skills() {
         </SkillItem>
         <SkillItem>
           <h2>
-            <i class="fab fa-react"></i>
+            <i className="fab fa-react"></i>
           </h2>
           <div className="skill-content">
             Lorem Ipsum is simply dummy teext of the printing and typesetting
@@ -40,7 +40,7 @@ function Skills() {
         </SkillItem>
         <SkillItem>
           <h2>
-            <i class="fab fa-js"></i>
+            <i className="fab fa-js"></i>
           </h2>
           <div className="skill-content">
             Lorem Ipsum is simply dummy teext of the printing and typesetting
@@ -50,7 +50,7 @@ function Skills() {
         </SkillItem>
         <SkillItem>
           <h2>
-            <i class="fab fa-node"></i>
+            <i className="fab fa-node"></i>
           </h2>
           <div className="skill-content">
             Lorem Ipsum is simply dummy teext of the printing and typesetting
@@ -60,7 +60,7 @@ function Skills() {
         </SkillItem>
         <SkillItem>
           <h2>
-            <i class="fab fa-python"></i>{" "}
+            <i className="fab fa-python"></i>{" "}
           </h2>
           <div className="skill-content">
             Lorem Ipsum is simply dummy teext of the printing and typesetting
@@ -104,11 +104,11 @@ const SkillItem = styled.div`
   /* min-height: 16rem; */
   color: ${colors.light};
   text-align: center;
-  border: 5px solid ${colors.secondary};
+  border: 5px solid ${colors.main};
   background-color: ${colors.secondary};
   box-shadow: 10px 10px 0px 0px rgba(0, 0, 0);
   /* font-weight: bold; */
-  width: 30%;
+  width: 32%;
   @media (max-width: 1108px) {
     width: 45%;
   }
@@ -118,6 +118,7 @@ const SkillItem = styled.div`
   font-size: ${sizes.small};
   &:hover {
     color: ${colors.secondary};
+    border: 5px solid ${colors.secondary};
 
     background-color: ${colors.light};
     h2 {

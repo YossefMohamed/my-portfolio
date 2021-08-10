@@ -2,61 +2,78 @@ import React from "react";
 import styled from "styled-components";
 import colors from "../util/colors";
 import sizes from "../util/sizes";
+import { useHistory } from "react-router-dom";
+import { HashLink as Link } from "react-router-hash-link";
 
 function Nav() {
   const [navCheck, setNavCheck] = React.useState(0);
-
-  const [scrolling, setScrolling] = React.useState(false);
-  const [scrollTop, setScrollTop] = React.useState(0);
+  const [scrollingTop, setScrollingTop] = React.useState(0);
   const [pageHeight, setPageHeight] = React.useState(
-    document.querySelector("body").innerWidth
+    document.querySelector("body").offsetHeight
   );
-  console.log(pageHeight);
+  const history = useHistory();
+  console.log(history);
   const onScroll = (e) => {
-    setScrollTop(e.target.documentElement.scrollTop);
-    setScrolling(e.target.documentElement.scrollTop > scrollTop);
+    if (window.pageYOffset) {
+      setPageHeight(document.querySelector("body").offsetHeight);
+      setScrollingTop(window.pageYOffset / (pageHeight / 100));
+    }
   };
   React.useEffect(() => {
     window.addEventListener("scroll", onScroll);
   }, []);
   return (
     <FlexContainer>
-      <Logo>YM..</Logo>
+      <BorderNav></BorderNav>
+
+      <Logo>
+        <span onClick={(e) => history.push("/")}>YM..</span>
+      </Logo>
       <NavList clicked={navCheck}>
         <NavListItem>
           <span>
-            <i class="fas fa-user-tie"></i>
+            <i className="fas fa-user-tie"></i>
           </span>{" "}
           About
         </NavListItem>
         <NavListItem>
           {" "}
-          <span>
-            <i class="fas fa-drafting-compass"></i>{" "}
-          </span>
-          Skills
+          <Link to="#projects">
+            <span>
+              <i className="fas fa-drafting-compass"></i>{" "}
+            </span>
+            Skills
+          </Link>
         </NavListItem>
-        <NavListItem>
+        <NavListItem onClick={(e) => history.push("/blog")}>
           <span>
-            <i class="far fa-newspaper"></i>{" "}
+            <i className="far fa-newspaper"></i>{" "}
           </span>
           Blog
         </NavListItem>
         <NavListItem>
           <span>
             {" "}
-            <i class="far fa-id-card"></i>{" "}
+            <i className="far fa-id-card"></i>{" "}
           </span>{" "}
           Contact
         </NavListItem>
       </NavList>
       <NavCheck onClick={(e) => setNavCheck(navCheck ? 0 : 1)}>
-        <i class="fas fa-bars"></i>
+        <i className="fas fa-bars"></i>
       </NavCheck>
     </FlexContainer>
   );
 }
-
+const BorderNav = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  top: 100%;
+  left: 0;
+  border-radius: 0px 0px 5px 5px;
+  background-color: ${colors.secondary};
+`;
 const NavCheck = styled.div`
   font-size: ${sizes.medium};
   display: none;
@@ -69,8 +86,7 @@ const FlexContainer = styled.div`
   position: sticky;
   top: 0;
   background-color: ${colors.light};
-  border-bottom: 5px solid ${colors.secondary};
-  box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 10px 6px 0px rgba(0, 0, 0, 0.2);
   color: black;
   z-index: 55;
   justify-content: space-between;
@@ -82,6 +98,10 @@ const Logo = styled.div`
   font-size: ${sizes.big};
   font-weight: bolder;
   font-family: "Sofia", sans-serif;
+  span {
+    cursor: pointer;
+  }
+
   width: 20%;
 `;
 const NavList = styled.ul`
@@ -104,7 +124,7 @@ const NavList = styled.ul`
     height: fit-content;
     justify-content: space-between;
     position: absolute;
-    transform: scale(${(props) => props.clicked});
+    transform: scale(${(props) => props.clicked}) translateY(5px);
     transform-origin: top;
     box-shadow: 10px 10px black;
     background: ${colors.light};
@@ -115,6 +135,7 @@ const NavListItem = styled.li`
   margin-left: 2rem;
   padding: 1rem 0.5rem;
   height: 100%;
+  cursor: pointer;
   span {
     margin: 0 10px;
   }

@@ -86,7 +86,7 @@ const ScreenContainer = styled.div`
   .title {
     color: ${colors.light};
     text-align: left;
-    width: 60%;
+    width: 65%;
     transform: translateX(-1.5rem);
     margin: 0 auto;
     @media (max-width: 768px) {
@@ -106,7 +106,7 @@ const FlexContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  width: 60%;
+  width: 65%;
   @media (max-width: 768px) {
     width: 90%;
   }
@@ -126,9 +126,10 @@ const FlexContainer = styled.div`
       content: "";
       height: 3rem;
       width: 3rem;
+      box-shadow: 4px 4px black;
       transform: translate(-55%, -50%);
       background-color: ${colors.light};
-      filter: brightness(75%);
+      /* filter: brightness(75%); */
 
       top: 0;
       left: 0;

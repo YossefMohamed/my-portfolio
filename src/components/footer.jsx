@@ -20,6 +20,7 @@ const FooterContainer = styled.div`
     position: relative;
     box-shadow: 10px 10px ${colors.main};
   }
+  border: 3px solid ${colors.main};
   background-color: ${colors.secondary};
   width: 100%;
   /* transform: translateY(-10px); */
