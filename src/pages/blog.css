@@ -1,0 +1,60 @@
+.page-container .flex-container {
+  margin: 2rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.page-container .flex-container > div {
+  padding-top: 10px;
+}
+
+.page-container .paginate-ctn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.page-container .round-effect {
+  color: #ff2e3a;
+  cursor: pointer;
+  /*   border:1px solid red; */
+  font-size: 1.1rem;
+  text-align: center;
+  padding-left: 10px;
+  padding: 10px 25px;
+  margin: 5px;
+  text-decoration: none;
+}
+
+.page-container .round-effect:hover {
+  text-decoration: none;
+  background: #ff2e3a;
+  color: #FFF;
+}
+
+.page-container .round-effect:hover a {
+  text-decoration: none;
+  color: #FFF;
+}
+
+.page-container .active {
+  background: #ff2e3a;
+  color: #FFF;
+}
+
+.page-container a:link {
+  text-decoration: none;
+  color: #ff2e3a;
+}
+/*# sourceMappingURL=blog.css.map */
