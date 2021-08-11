@@ -139,16 +139,31 @@ const FlexContainer = styled.div`
       font-size: ${sizes.medium};
       transform: translateY(-1.35rem);
       color: ${colors.light};
-      font-weight: bold;
+      font-weight: bold; 
+      @media (max-width: 768px) {
+        font-size: calc(${sizes.medium} + -5px);
+
+
+      }
+
     }
     .xp-date {
       margin: 0rem 0 1rem;
       font-size: ${sizes.small};
       color: ${colors.light};
-      filter: brightness(95%);
+      filter: brightness(95%); @media (max-width: 768px) {
+        font-size: calc(${sizes.small} + -5px);
+
+
+      }
     }
     .xp-content {
       font-size: ${sizes.small};
+       @media (max-width: 768px) {
+        font-size: calc(${sizes.small} + -5px);
+
+
+      }
     }
   }
 `;

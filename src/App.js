@@ -7,6 +7,7 @@ import Home from "./pages/home";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NotFound from "./pages/notFount";
 import Blog from "./pages/blog.jsx";
+
 import ScrollTop from "./util/scroll";
 import PostPage from "./pages/post";
 
@@ -22,7 +23,8 @@ function App(props) {
           <Route path="/post/:id" component={PostPage} exact />
           <Route path="/blog" component={Blog} exact></Route>
           <Route path="" component={NotFound} exact />
-        </Switch>
+       
+         </Switch>
         <Footer />
       </BrowserRouter>
     </Container>
@@ -31,8 +33,10 @@ function App(props) {
 
 const Container = styled.div`
   padding: 0rem 7rem;
-  @media (max-width: 868px) {
-    padding: 0rem 1rem;
+  width: 100%;
+  @media (max-width: 768px) {
+    padding: 0rem 2rem;
   }
-`;
+
+  `
 export default App;

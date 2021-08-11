@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import colors from "../util/colors";
 import sizes from "../util/sizes";
+import { Link } from "react-router-dom"
 
 function BlogItem() {
   return (
@@ -33,7 +34,7 @@ function BlogItem() {
           users confusion. These components are often used in the same context,
           but look completely different.
         </div>
-        <div className="readmore">read more →</div>
+        <div className="readmore"><Link to="/post/id">read more → </Link></div>
       </BlogBreif>
     </BLogItem>
   );
@@ -42,11 +43,19 @@ const BLogItem = styled.div`
   display: flex;
   justify-content: space-between;
   min-height: 20rem;
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+  }
   .image-container {
     width: 50%;
     overflow: hidden;
+    @media (max-width: 768px) {
+  width:100%!important;
+    }
   }
-  margin: 4rem 0;
+  margin: 3rem 0;
+
 `;
 
 const BlogPicture = styled.img`
@@ -56,6 +65,7 @@ const BlogPicture = styled.img`
         transform: scale(1.5) rotate(20deg);
       }
     }
+    
 `;
 
 const BlogBreif = styled.div`
@@ -82,12 +92,16 @@ const BlogBreif = styled.div`
   .post-content {
     font-size: ${sizes.medium};
     color: ${colors.main};
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
   }
   .readmore {
     margin-top: auto;
     font-size: ${sizes.medium};
     font-weight: bold;
-    color: ${colors.main};
+    margin-bottom: 3rem;
+    color: ${colors.main};cursor: pointer;
   }
   .post-details {
     display: flex;
@@ -105,6 +119,41 @@ const BlogBreif = styled.div`
       margin-right: 10px;
       color: ${colors.secondary};
     }
+  }
+  @media (max-width: 768px) {
+  width:100%!important;
+  padding: 2rem 0;.post-details {
+    margin: 0.75rem.25rem ;  
+
+    .date {
+      margin: 0 0.25rem 0 0;  
+      font-size:calc( ${sizes.small} + -4px);
+
+    }
+  }
+  .post-content {
+    font-size: ${sizes.small};
+    color: ${colors.main};
+  }.post-title {
+    font-size: ${sizes.big};
+    color: ${colors.secondary};
+    margin: 0.5rem 0 0;
+    font-weight: bold;
+  }
+    }.post-tag {
+    span {
+      margin-right: 10px;
+      font-weight: bold;
+      color: ${colors.secondary};
+      font-size: ${sizes.small};
+
+    }
+    display: flex;
+    justify-content: flex-start;
+  }
+  .readmore {
+    
+    margin-top: 1.5rem;
   }
 `;
 

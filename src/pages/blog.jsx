@@ -19,9 +19,10 @@ function Blog() {
         <div className="blog-tages">
           <span>#CSS</span>
           <span>#HTML</span>
-          <span>#JavaScript</span>
+          <span>#JS</span>
           <span>#GraphQL</span>
-          <span>#React</span> <span>#Node</span>
+          <span>#React</span> 
+          <span>#Node</span>
         </div>
       </BlogDescribtion>
 
@@ -40,6 +41,7 @@ const BlogDescribtion = styled.div`
   display: flex;
   margin: 3rem 0;
 
+  
   .breif {
     width: 65%;
     color: ${colors.main};
@@ -49,7 +51,13 @@ const BlogDescribtion = styled.div`
     display: flex;
     align-items: center;
     vertical-align: middle;
+    @media (max-width: 768px) {
 
+        padding: 0 0.1rem 0 0;
+        font-size: calc(${sizes.small} + 0px);
+
+
+    }
     /* background-color: red; */
   }
   .blog-tages {
@@ -67,6 +75,15 @@ const BlogDescribtion = styled.div`
       border-radius: 10px;
       flex-wrap: nowrap;
       width: 30%;
+    }  @media (max-width: 768px) {
+        span{
+            width: max-content;
+
+margin-right: 8px;
+
+        }
+
+
     }
   }
 `;

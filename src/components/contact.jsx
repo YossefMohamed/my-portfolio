@@ -27,8 +27,9 @@ function Contact() {
 const ContactContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  min-height: 75vh;
+  min-height: 50vh;
   width: 100%;
+  margin: 2rem 0 4rem;
   @media (max-width: 650px) {
     justify-content: center;
   }
@@ -60,12 +61,13 @@ const ContactContainer = styled.div`
       font-weight: bold;
       color: ${colors.secondary};
       margin-left: 1rem;
-      margin-top: 1rem;
+      margin-top: 2rem;
     }
   }
   @media (max-width: 750px) {
     .link {
-      margin: 0 1rem;
+      margin: 0 0.2rem;      font-size: calc(${sizes.small} + -3px)!important;
+
     }
     flex-direction: column;
     margin: 1rem 0;

@@ -4,6 +4,7 @@ import colors from "../util/colors";
 import sizes from "../util/sizes";
 import { useHistory } from "react-router-dom";
 import { HashLink as Link } from "react-router-hash-link";
+import { motion } from "framer-motion";
 
 function Nav() {
   const [navCheck, setNavCheck] = React.useState(0);
@@ -23,10 +24,10 @@ function Nav() {
     window.addEventListener("scroll", onScroll);
   }, []);
   return (
-    <FlexContainer>
+    <FlexContainer >
       <BorderNav></BorderNav>
 
-      <Logo>
+      <Logo >
         <span
           onClick={(e) => {
             closeNav();
@@ -38,7 +39,8 @@ function Nav() {
       </Logo>
       <NavList clicked={navCheck}>
         {" "}
-        <NavListItem
+        <NavListItem         
+
           onClick={(e) => {
             if (history.location.pathname.split("/")[1]) history.push("/");
             closeNav();
@@ -52,6 +54,7 @@ function Nav() {
           </Link>
         </NavListItem>
         <NavListItem
+        
           onClick={(e) => {
             if (history.location.pathname.split("/")[1]) history.push("/");
             closeNav();
@@ -64,7 +67,8 @@ function Nav() {
             Projects
           </Link>
         </NavListItem>
-        <NavListItem
+        <NavListItem         
+
           onClick={(e) => {
             if (history.location.pathname.split("/")[1]) history.push("/");
             closeNav();
@@ -78,7 +82,8 @@ function Nav() {
             Skills
           </Link>
         </NavListItem>
-        <NavListItem
+        <NavListItem         
+
           onClick={(e) => {
             closeNav();
             history.push("/blog");
@@ -89,7 +94,8 @@ function Nav() {
           </span>
           Blog
         </NavListItem>
-        <NavListItem
+        <NavListItem         
+
           onClick={(e) => {
             if (history.location.pathname.split("/")[1]) history.push("/");
             closeNav();
@@ -123,12 +129,11 @@ const NavCheck = styled.div`
   font-size: ${sizes.medium};
   display: none;
   cursor: pointer;
-
-  @media (max-width: 768px) {
+  @media (max-width: 925px) {
     display: block;
   }
 `;
-const FlexContainer = styled.div`
+const FlexContainer = styled(motion.div)`
   display: flex;
   position: sticky;
   top: 0;
@@ -148,7 +153,6 @@ const Logo = styled.div`
   span {
     cursor: pointer;
   }
-
   width: 20%;
 `;
 const NavList = styled.ul`
@@ -161,8 +165,7 @@ const NavList = styled.ul`
   margin: 0;
   flex-grow: 1;
   transition: inherit;
-
-  @media (max-width: 768px) {
+  @media (max-width: 925px) {
     flex-direction: column;
     border: 1px solid black;
     top: 100%;
@@ -178,16 +181,22 @@ const NavList = styled.ul`
   }
   justify-content: flex-end;
 `;
-const NavListItem = styled.li`
+const NavListItem = styled(motion.li)`
   margin-left: 2rem;
-  padding: 1rem 0.5rem;
+  padding: 1rem 0.5rem;  
+  border-bottom: 3px solid transparent;
+  
+  color:${colors.main};
   height: 100%;
   font-weight: bold;
   cursor: pointer;
   span {
     margin: 0 10px;
   }
-  @media (max-width: 768px) {
+  &:hover{
+    opacity: 0.75;
+  }
+  @media (max-width: 925px) {
     margin: 0;
     border: 0.5px solid black;
     width: 100%;

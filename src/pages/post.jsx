@@ -9,14 +9,14 @@ function PostPage(props) {
     <PostContainer>
       <PostImageContainer>
         <img
-          src="https://gatsby-persoanl.netlify.app/static/6a5a427b56b5738efab90c807e3d8c57/fc91b/e4d5ed47ee58aa859995cae2a4e83221.webp"
+          src="https://wallpapercave.com/wp/wp4923991.png"
           alt="PostImage"
           className="post-image"
         />
       </PostImageContainer>
       <div className="post-content">
         <PostTitle>
-          <h2>Thay The Frameworks Really Destroyed Web Performance 🤔</h2>
+          <h2>Thay The Frameworks Really Destroyed Web Performance🤔</h2>
         </PostTitle>
         <div className="post-details">
           <div className="date">
@@ -66,12 +66,13 @@ const PostContent = styled.div`
   }
   line-height: 200%;
 
-  margin: 3rem 0;
+  margin:  5rem 0 ;
 `;
 const PostTitle = styled.div`
   color: ${colors.main};
   font-size: ${sizes.big};
-  font-weight: bold;
+  font-family: monospace;
+  font-weight: bolder;
 `;
 const PostContainer = styled.div`
   margin: 3rem 0;
@@ -79,7 +80,7 @@ const PostContainer = styled.div`
     display: flex;
     width: 100%;
     justify-content: flex-start;
-    margin: 1rem 0;
+    margin: 2rem 0;
     font-size: ${sizes.small};
     font-weight: 500;
     .date {
@@ -94,12 +95,12 @@ const PostContainer = styled.div`
     }
   }
   .post-content {
-    margin: 4rem 0 0;
+    margin: 4rem 0 ;
   }
 `;
 
 const NextPost = styled.div`
-  border: 5px solid ${colors.secondary};
+  border: 7px solid ${colors.secondary};
   border-left: 0;
   border-right: 0;
   display: flex;
@@ -113,11 +114,14 @@ const NextPost = styled.div`
     padding: 0 1rem;
     justify-content: center;
     align-items: flex-end;
+    font-size: calc(${sizes.small} + -3px);
   }
   span {
     color: ${colors.main};
     font-weight: bold;
-    margin-top: 5px;
+    margin-top: 5px;    font-size: ${sizes.small};    cursor: pointer;
+
+
   }
   .real-next {
     align-items: flex-start;
@@ -125,13 +129,16 @@ const NextPost = styled.div`
 `;
 
 const PostImageContainer = styled.div`
-  width: 100%;
-  height: 40vh;
+  width: calc(100% - 8px);
+  height: 55vh;
   border: 5px solid ${colors.main};
   box-shadow: 8px 8px ${colors.secondary};
   .post-image {
     width: 100%;
     height: 100%;
+  }  @media (max-width: 768px) {
+    height: 45vh;
+
   }
 `;
 export default PostPage;
