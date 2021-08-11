@@ -4,7 +4,7 @@ import colors from "../util/colors";
 import sizes from "../util/sizes";
 function Skills() {
   return (
-    <SkillScreen>
+    <SkillScreen id="skills">
       <h1>Skills 👨‍💻</h1>
 
       <FlexContainer>
@@ -74,12 +74,14 @@ function Skills() {
 }
 
 const SkillScreen = styled.div`
-  background: white;
   min-height: 75vh;
   padding: 10rem 3rem;
   h1 {
     font-size: ${sizes.huge};
     text-align: left;
+  }
+  @media (max-width: 650px) {
+    padding: 10rem 0;
   }
 `;
 const FlexContainer = styled.div`
@@ -113,7 +115,7 @@ const SkillItem = styled.div`
     width: 45%;
   }
   @media (max-width: 850px) {
-    width: 90%;
+    width: 95%;
   }
   font-size: ${sizes.small};
   &:hover {

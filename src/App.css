@@ -5,6 +5,12 @@
 
   transition: all 100ms ease-in;
 }
+a {
+  text-decoration: none !important;
+}
+svg {
+  background-color: transparent !important;
+}
 body {
   font-family: "Oswald" !important;
 }

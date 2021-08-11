@@ -7,17 +7,14 @@ import Home from "./pages/home";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NotFound from "./pages/notFount";
 import Blog from "./pages/blog.jsx";
+import ScrollTop from "./util/scroll";
 import PostPage from "./pages/post";
 
 function App(props) {
-  React.useEffect(() => {
-    // console.log(props);
-    window.scrollTo(0, 0);
-  }, [props.match]);
-
   return (
     <Container>
       <BrowserRouter>
+        <ScrollTop />
         <Nav />
 
         <Switch>

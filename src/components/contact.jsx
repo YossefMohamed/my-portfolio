@@ -6,7 +6,7 @@ import { Button } from "./about";
 
 function Contact() {
   return (
-    <ContactContainer>
+    <ContactContainer id="content">
       <div className="social-links">
         <div className="link">LinkedIn</div>
         <div className="link">FaceBook</div>
@@ -29,6 +29,9 @@ const ContactContainer = styled.div`
   justify-content: space-between;
   min-height: 75vh;
   width: 100%;
+  @media (max-width: 650px) {
+    justify-content: center;
+  }
   .mail-me {
     display: flex;
     flex-direction: column;
@@ -38,6 +41,9 @@ const ContactContainer = styled.div`
     &-text {
       margin-bottom: 3rem;
       font-size: ${sizes.huge};
+      @media (max-width: 650px) {
+        text-align: center;
+      }
       color: ${colors.secondary};
     }
     &-button {
@@ -53,7 +59,29 @@ const ContactContainer = styled.div`
       font-size: ${sizes.small};
       font-weight: bold;
       color: ${colors.secondary};
-      margin: 1rem;
+      margin-left: 1rem;
+      margin-top: 1rem;
+    }
+  }
+  @media (max-width: 750px) {
+    .link {
+      margin: 0 1rem;
+    }
+    flex-direction: column;
+    margin: 1rem 0;
+    margin-left: 0rem;
+    justify-content: center;
+
+    .social-links {
+      margin-left: 0rem;
+
+      width: 95%;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .mail-me {
+      width: 95%;
+      margin: 3rem 0 4rem;
     }
   }
 `;

@@ -41,11 +41,11 @@ const BlogDescribtion = styled.div`
   margin: 3rem 0;
 
   .breif {
-    width: 70%;
+    width: 65%;
     color: ${colors.main};
-    font-size: ${sizes.small};
+    font-size: calc(${sizes.small} + 5px);
     font-weight: 550;
-    padding: 0 4rem 0 0;
+    padding: 0 3rem 0 0;
     display: flex;
     align-items: center;
     vertical-align: middle;
@@ -53,7 +53,7 @@ const BlogDescribtion = styled.div`
     /* background-color: red; */
   }
   .blog-tages {
-    width: 30%;
+    width: 35%;
     align-items: center;
 
     /* background-color: red; */
@@ -62,7 +62,6 @@ const BlogDescribtion = styled.div`
     display: flex;
     color: ${colors.light};
     filter: brightness(60%);
-    justify-content: space-between;
     span {
       margin: 5px 0;
       border-radius: 10px;

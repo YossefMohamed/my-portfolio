@@ -12,13 +12,13 @@ function Nav() {
     document.querySelector("body").offsetHeight
   );
   const history = useHistory();
-  console.log(history);
   const onScroll = (e) => {
     if (window.pageYOffset) {
       setPageHeight(document.querySelector("body").offsetHeight);
       setScrollingTop(window.pageYOffset / (pageHeight / 100));
     }
   };
+  const closeNav = () => setNavCheck(0);
   React.useEffect(() => {
     window.addEventListener("scroll", onScroll);
   }, []);
@@ -27,36 +27,81 @@ function Nav() {
       <BorderNav></BorderNav>
 
       <Logo>
-        <span onClick={(e) => history.push("/")}>YM..</span>
+        <span
+          onClick={(e) => {
+            closeNav();
+            history.push("/");
+          }}
+        >
+          YM..
+        </span>
       </Logo>
       <NavList clicked={navCheck}>
-        <NavListItem>
-          <span>
-            <i className="fas fa-user-tie"></i>
-          </span>{" "}
-          About
+        {" "}
+        <NavListItem
+          onClick={(e) => {
+            if (history.location.pathname.split("/")[1]) history.push("/");
+            closeNav();
+          }}
+        >
+          <Link to="#experiance">
+            <span>
+              <i className="fas fa-user-tie"></i>
+            </span>{" "}
+            Experience
+          </Link>
         </NavListItem>
-        <NavListItem>
-          {" "}
+        <NavListItem
+          onClick={(e) => {
+            if (history.location.pathname.split("/")[1]) history.push("/");
+            closeNav();
+          }}
+        >
           <Link to="#projects">
+            <span>
+              <i className="fas fa-laptop"></i>
+            </span>{" "}
+            Projects
+          </Link>
+        </NavListItem>
+        <NavListItem
+          onClick={(e) => {
+            if (history.location.pathname.split("/")[1]) history.push("/");
+            closeNav();
+          }}
+        >
+          {" "}
+          <Link to="#skills">
             <span>
               <i className="fas fa-drafting-compass"></i>{" "}
             </span>
             Skills
           </Link>
         </NavListItem>
-        <NavListItem onClick={(e) => history.push("/blog")}>
+        <NavListItem
+          onClick={(e) => {
+            closeNav();
+            history.push("/blog");
+          }}
+        >
           <span>
             <i className="far fa-newspaper"></i>{" "}
           </span>
           Blog
         </NavListItem>
-        <NavListItem>
-          <span>
-            {" "}
-            <i className="far fa-id-card"></i>{" "}
-          </span>{" "}
-          Contact
+        <NavListItem
+          onClick={(e) => {
+            if (history.location.pathname.split("/")[1]) history.push("/");
+            closeNav();
+          }}
+        >
+          <Link to="#content">
+            <span>
+              {" "}
+              <i className="far fa-id-card"></i>{" "}
+            </span>{" "}
+            Contact
+          </Link>
         </NavListItem>
       </NavList>
       <NavCheck onClick={(e) => setNavCheck(navCheck ? 0 : 1)}>
@@ -77,6 +122,8 @@ const BorderNav = styled.div`
 const NavCheck = styled.div`
   font-size: ${sizes.medium};
   display: none;
+  cursor: pointer;
+
   @media (max-width: 768px) {
     display: block;
   }
@@ -135,6 +182,7 @@ const NavListItem = styled.li`
   margin-left: 2rem;
   padding: 1rem 0.5rem;
   height: 100%;
+  font-weight: bold;
   cursor: pointer;
   span {
     margin: 0 10px;

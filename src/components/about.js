@@ -4,7 +4,7 @@ import sizes from "../util/sizes";
 import colors from "./../util/colors";
 function About() {
   return (
-    <ScreenDiv>
+    <ScreenDiv id="about">
       <div>
         <Hello>
           Hi, I'm <span>Yossef Mohamed</span> 👋
@@ -24,12 +24,12 @@ function About() {
 }
 
 const ScreenDiv = styled.div`
-  min-height: 70vh;
-  background-color: ${colors.light};
+  min-height: 60vh;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 1rem;
+  padding: 4rem 1rem 2rem;
   @media (max-width: 768px) {
     text-align: center;
   }
@@ -38,6 +38,8 @@ const Hello = styled.div`
   font-size: ${sizes.medium};
   span {
     color: ${colors.secondary};
+    font-size: calc(${sizes.medium} + 5px);
+
     font-weight: bold;
   }
 `;

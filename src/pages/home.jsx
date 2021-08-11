@@ -1,20 +1,21 @@
-import React from 'react'
-import About from '../components/about'
-import Contact from '../components/contact'
-import Experiance from '../components/experiance'
-import Projects from '../components/projects'
-import Skills from '../components/skills'
+import React from "react";
+import styled from "styled-components";
+import About from "../components/about";
+import Contact from "../components/contact";
+import Experiance from "../components/experiance";
+import Projects from "../components/projects";
+import Skills from "../components/skills";
 
 function Home(props) {
-    return (
-        <div>
-             <About />
+  return (
+    <HomeContainer>
+      <About />
       <Experiance />
       <Skills />
       <Projects />
       <Contact />
-        </div>
-    )
+    </HomeContainer>
+  );
 }
-
-export default Home
+const HomeContainer = styled.div``;
+export default Home;

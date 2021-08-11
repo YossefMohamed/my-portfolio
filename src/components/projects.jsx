@@ -68,6 +68,7 @@ const Tilte = styled.h2`
   @media (max-width: 908px) {
     width: 90%;
     margin: 0rem auto 2rem;
+    padding: 0;
   }
 
   font-size: ${sizes.huge};
@@ -77,6 +78,9 @@ const ProjectsContainer = styled.div`
   flex-flow: row wrap;
   padding: 0 3rem;
   justify-content: space-between;
+  @media (max-width: 908px) {
+    padding: 0;
+  }
 `;
 const ProjectItem = styled.div`
   width: 47%;
@@ -111,8 +115,8 @@ const ProjectItem = styled.div`
     }
   }
   @media (max-width: 908px) {
-    width: 90%;
-    margin: 1rem auto;
+    width: 95%;
+    margin: 2rem auto;
     .project-title {
       font-size: ${sizes.medium};
 

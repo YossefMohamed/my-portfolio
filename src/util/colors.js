@@ -3,4 +3,6 @@ const colors = {
   secondary: "#ff2e3a",
   light: "white",
 };
+
+//#ff722e
 export default colors;

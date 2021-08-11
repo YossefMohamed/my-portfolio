@@ -41,12 +41,12 @@ function BlogItem() {
 const BLogItem = styled.div`
   display: flex;
   justify-content: space-between;
-  min-height: 25rem;
+  min-height: 20rem;
   .image-container {
     width: 50%;
     overflow: hidden;
   }
-  margin: 2rem 0;
+  margin: 4rem 0;
 `;
 
 const BlogPicture = styled.img`
@@ -84,8 +84,8 @@ const BlogBreif = styled.div`
     color: ${colors.main};
   }
   .readmore {
-    margin: 1rem 0;
-    font-size: ${sizes.small};
+    margin-top: auto;
+    font-size: ${sizes.medium};
     font-weight: bold;
     color: ${colors.main};
   }
