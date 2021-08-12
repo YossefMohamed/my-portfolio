@@ -23,8 +23,7 @@ function App(props) {
           <Route path="/post/:id" component={PostPage} exact />
           <Route path="/blog" component={Blog} exact></Route>
           <Route path="" component={NotFound} exact />
-       
-         </Switch>
+        </Switch>
         <Footer />
       </BrowserRouter>
     </Container>
@@ -33,10 +32,10 @@ function App(props) {
 
 const Container = styled.div`
   padding: 0rem 7rem;
+  display: relative;
   width: 100%;
   @media (max-width: 768px) {
-    padding: 0rem 2rem;
+    padding: 0rem 1rem;
   }
-
-  `
+`;
 export default App;

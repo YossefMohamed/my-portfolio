@@ -24,10 +24,10 @@ function Nav() {
     window.addEventListener("scroll", onScroll);
   }, []);
   return (
-    <FlexContainer >
+    <FlexContainer>
       <BorderNav></BorderNav>
 
-      <Logo >
+      <Logo>
         <span
           onClick={(e) => {
             closeNav();
@@ -39,8 +39,7 @@ function Nav() {
       </Logo>
       <NavList clicked={navCheck}>
         {" "}
-        <NavListItem         
-
+        <NavListItem
           onClick={(e) => {
             if (history.location.pathname.split("/")[1]) history.push("/");
             closeNav();
@@ -54,7 +53,6 @@ function Nav() {
           </Link>
         </NavListItem>
         <NavListItem
-        
           onClick={(e) => {
             if (history.location.pathname.split("/")[1]) history.push("/");
             closeNav();
@@ -67,8 +65,7 @@ function Nav() {
             Projects
           </Link>
         </NavListItem>
-        <NavListItem         
-
+        <NavListItem
           onClick={(e) => {
             if (history.location.pathname.split("/")[1]) history.push("/");
             closeNav();
@@ -82,8 +79,7 @@ function Nav() {
             Skills
           </Link>
         </NavListItem>
-        <NavListItem         
-
+        <NavListItem
           onClick={(e) => {
             closeNav();
             history.push("/blog");
@@ -94,8 +90,7 @@ function Nav() {
           </span>
           Blog
         </NavListItem>
-        <NavListItem         
-
+        <NavListItem
           onClick={(e) => {
             if (history.location.pathname.split("/")[1]) history.push("/");
             closeNav();
@@ -183,24 +178,28 @@ const NavList = styled.ul`
 `;
 const NavListItem = styled(motion.li)`
   margin-left: 2rem;
-  padding: 1rem 0.5rem;  
+  padding: 1rem 0.5rem;
   border-bottom: 3px solid transparent;
-  
-  color:${colors.main};
+
+  color: ${colors.main};
   height: 100%;
   font-weight: bold;
   cursor: pointer;
   span {
     margin: 0 10px;
   }
-  &:hover{
-    opacity: 0.75;
-  }
   @media (max-width: 925px) {
     margin: 0;
     border: 0.5px solid black;
     width: 100%;
     padding-left: 2rem;
+  }
+  &:hover {
+    /* opacity: 0.75; */
+    color: ${colors.secondary};
+    * {
+      color: ${colors.secondary};
+    }
   }
 `;
 export default Nav;

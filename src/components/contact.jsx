@@ -66,8 +66,8 @@ const ContactContainer = styled.div`
   }
   @media (max-width: 750px) {
     .link {
-      margin: 0 0.2rem;      font-size: calc(${sizes.small} + -3px)!important;
-
+      margin: 0 0.2rem;
+      font-size: calc(${sizes.small} + -3px) !important;
     }
     flex-direction: column;
     margin: 1rem 0;

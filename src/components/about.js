@@ -10,7 +10,7 @@ function About() {
           Hi, I'm <span>Yossef Mohamed</span> 👋
         </Hello>
         <Brief>
-          I'm MERN stack Deveoloper
+          I'm a MERN stack Deveoloper
           <br /> I'm Building webapps, brands, and experience...
         </Brief>
         <Hello>
@@ -31,24 +31,22 @@ const ScreenDiv = styled.div`
   padding: 4rem 1rem 2rem;
   @media (max-width: 750px) {
     padding: 3rem 1rem 2rem;
-
   }
   @media (max-width: 768px) {
     text-align: center;
   }
 `;
 const Hello = styled.div`
-  font-size: ${sizes.medium};@media (max-width: 868px) {
-    font-size:calc( ${sizes.medium} + -5px);
-
+  font-size: ${sizes.medium};
+  @media (max-width: 868px) {
+    font-size: calc(${sizes.medium} + -5px);
   }
   span {
     color: ${colors.secondary};
     font-size: calc(${sizes.medium} + 5px);
     @media (max-width: 868px) {
-    font-size:calc( ${sizes.medium} + 0px);
-
-  }
+      font-size: calc(${sizes.medium} + 0px);
+    }
     font-weight: bold;
   }
 `;
@@ -56,9 +54,9 @@ const Brief = styled.div`
   font-size: ${sizes.huge};
   font-weight: bolder;
   margin: 1rem 0 0.5rem;
-  color: black;  @media (max-width: 868px) {
-    font-size:calc( ${sizes.huge} + -8px);
-
+  color: black;
+  @media (max-width: 868px) {
+    font-size: calc(${sizes.huge} + -8px);
   }
 `;
 export const Button = styled.button`

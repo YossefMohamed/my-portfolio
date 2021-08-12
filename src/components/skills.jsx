@@ -79,9 +79,12 @@ const SkillScreen = styled.div`
   h1 {
     font-size: ${sizes.huge};
     text-align: left;
+    @media (max-width: 650px) {
+      font-size: ${sizes.big}!important;
+    }
   }
   @media (max-width: 650px) {
-    padding: 10rem 0;
+    padding: 5rem 0rem;
   }
 `;
 const FlexContainer = styled.div`

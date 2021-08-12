@@ -16,7 +16,7 @@ function PostPage(props) {
       </PostImageContainer>
       <div className="post-content">
         <PostTitle>
-          <h2>Thay The Frameworks Really Destroyed Web Performance🤔</h2>
+          <h2>Is React Really Destroyed Web Performance🤔</h2>
         </PostTitle>
         <div className="post-details">
           <div className="date">
@@ -66,13 +66,15 @@ const PostContent = styled.div`
   }
   line-height: 200%;
 
-  margin:  5rem 0 ;
+  /* margin: 5rem 0; */
 `;
 const PostTitle = styled.div`
-  color: ${colors.main};
-  font-size: ${sizes.big};
-  font-family: monospace;
-  font-weight: bolder;
+  h2 {
+    color: ${colors.main};
+    font-size: calc(${sizes.medium} + 6px);
+    font-weight: bolder;
+    text-transform: none;
+  }
 `;
 const PostContainer = styled.div`
   margin: 3rem 0;
@@ -95,7 +97,7 @@ const PostContainer = styled.div`
     }
   }
   .post-content {
-    margin: 4rem 0 ;
+    margin: 4rem 0;
   }
 `;
 
@@ -119,12 +121,18 @@ const NextPost = styled.div`
   span {
     color: ${colors.main};
     font-weight: bold;
-    margin-top: 5px;    font-size: ${sizes.small};    cursor: pointer;
-
-
+    margin-top: 5px;
+    font-size: ${sizes.small};
+    cursor: pointer;
+    text-align: right;
   }
   .real-next {
     align-items: flex-start;
+    text-align: left !important;
+
+    span {
+      text-align: left !important;
+    }
   }
 `;
 
@@ -136,9 +144,9 @@ const PostImageContainer = styled.div`
   .post-image {
     width: 100%;
     height: 100%;
-  }  @media (max-width: 768px) {
+  }
+  @media (max-width: 768px) {
     height: 45vh;
-
   }
 `;
 export default PostPage;
