@@ -4,15 +4,20 @@ import BlogItem from "../components/blogItem";
 import colors from "../util/colors";
 import sizes from "../util/sizes";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useHistory } from "react-router-dom";
 import "./blog.css";
 import { getPosts, NumberOfPages } from "../actions/postActions";
 import { getTages } from "../actions/tagActions";
 import LoaderComponent from "../components/loader";
-function Blog({ history, match }) {
+function Blog({ history, match, location }) {
   const dispatch = useDispatch();
   const tagBlog = match.params.tag ? match.params.tag : "all";
+  const [page, setPage] = React.useState(
+    location.hash ? location.hash.substring(1) : 1
+  );
+
   React.useEffect(() => {
+    setPage(location.hash.substring(1));
     dispatch(NumberOfPages());
     dispatch(getTages());
     dispatch(getPosts(1, tagBlog));
@@ -66,7 +71,7 @@ function Blog({ history, match }) {
               <BlogItem post={post} id={idx} />
             ))}
           </div>
-          <Paginate />
+          <Paginate page={page} />
         </BlogContainer>
       )}
     </React.Fragment>
@@ -153,12 +158,12 @@ const BlogTitle = styled.div`
   color: ${colors.main};
 `;
 
-function Paginate() {
-  const [currentPage, setCurrentPage] = React.useState(1);
+function Paginate({ page }) {
+  const history = useHistory();
+  const [currentPage, setCurrentPage] = React.useState(page);
 
   let maxPages = useSelector((state) => state.numberOfPagesReducer.pages);
   let items = [];
-  const dispatch = useDispatch();
   let leftSide = currentPage - 2;
   if (leftSide <= 0) leftSide = 1;
   let rightSide = currentPage + 2;
@@ -172,7 +177,7 @@ function Paginate() {
         }
         onClick={() => {
           setCurrentPage(number);
-          dispatch(getPosts(1, "all"));
+          history.push("/blog#" + number);
         }}
       >
         {number}

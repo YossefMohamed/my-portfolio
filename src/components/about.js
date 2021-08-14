@@ -11,12 +11,12 @@ function About() {
           Hi, I'm <span>Yossef Mohamed</span> 👋
         </Hello>
         <Brief>
-          I'm a MERN stack Deveoloper
+          I'm a Software Engineer
           <br /> I'm Building webapps, brands, and experience...
         </Brief>
         <Hello>
-          I Love Working With Modern Technologies, Building Awesome Projects. I
-          Prefer Write Your Functionality Requirements..
+          I Love Working With Modern Technologies, Building Awesome Projects.
+          Projects which will make the world a Better Place..
         </Hello>
         <Button onClick={(e) => axios.get("/resume")}>
           Download my resume

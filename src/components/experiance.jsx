@@ -29,9 +29,9 @@ function Experiance() {
               </div>
               <div className="xp-date">July 2020 - Present</div>
               <div className="xp-content">
-                sponsible for studying their employer’s current computer system,
-                identifying areas that need improvements or overhauls and
-                implementing these changes. They will need to be skilled in
+                responsible for studying their employer’s current computer
+                system, identifying areas that need improvements or overhauls
+                and implementing these changes. They will need to be skilled in
                 assessment techniques and have the ability to design and install
                 any necessary upgrades to the system.
               </div>
