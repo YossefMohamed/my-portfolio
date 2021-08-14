@@ -2,60 +2,98 @@ import React from "react";
 import styled from "styled-components";
 import colors from "../util/colors";
 import sizes from "../util/sizes";
+import { useDispatch, useSelector } from "react-redux";
+import { getPost } from "../actions/postActions";
+import LoaderComponent from "../components/loader";
+import { LoaderContainer } from "./blog";
+import Moment from "react-moment";
+import ReactMarkdown from "react-markdown";
 
 function PostPage(props) {
-  console.log(props.match.params.id);
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    if (!props.match.params.id) {
+      props.history.push("/blog");
+    }
+    dispatch(getPost(props.match.params.id));
+  }, []);
+  const loader = useSelector((state) => state.getPostReducer.loading);
+  const { post } = useSelector((state) => state.getPostReducer);
+  React.useEffect(() => {
+    if (!loader && !post._id) {
+      props.history.push("/notfound");
+      console.log(loader, post);
+    }
+  }, [post]);
   return (
-    <PostContainer>
-      <PostImageContainer>
-        <img
-          src="https://wallpapercave.com/wp/wp4923991.png"
-          alt="PostImage"
-          className="post-image"
-        />
-      </PostImageContainer>
-      <div className="post-content">
-        <PostTitle>
-          <h2>Is React Really Destroyed Web Performance🤔</h2>
-        </PostTitle>
-        <div className="post-details">
-          <div className="date">
-            <i className="fas fa-calendar-week"></i> date published : May 28,
-            2015
-          </div>
+    <React.Fragment>
+      {loader ? (
+        <LoaderContainer>
+          <LoaderComponent />
+        </LoaderContainer>
+      ) : (
+        <PostContainer>
+          <PostImageContainer>
+            <img
+              src={`/images/${post.coverImage}`}
+              alt={post.title}
+              className="post-image"
+            />
+          </PostImageContainer>
+          <div className="post-content">
+            <PostTitle>
+              <h2>{post.title}</h2>
+            </PostTitle>
+            <div className="post-details">
+              <div className="date">
+                <i className="fas fa-calendar-week"></i>{" "}
+                <span className="time-cont">date published :</span>
+                {` `}
+                <Moment format="YYYY/MM/DD">{post.createdAt}</Moment>
+              </div>
 
-          <div className="date">
-            {" "}
-            <i className="fas fa-eye"></i> 600 views{" "}
+              <div className="date"> </div>
+            </div>
+            <PostContent>
+              {<ReactMarkdown>{`${post.content}`}</ReactMarkdown>}
+            </PostContent>
           </div>
-        </div>
-        <PostContent>
-          This is my first post on my new fake blog! How exciting! I’m sure I’ll
-          write a lot more interesting things in the future. Oh, and here’s a
-          great quote from this Wikipedia on salted duck eggs. A salted duck egg
-          is a Chinese preserved food product made by soaking duck eggs in
-          brine, or packing each egg in damp, salted charcoal. In Asian
-          supermarkets, these eggs are sometimes sold covered in a thick layer
-          of salted charcoal paste. The eggs may also be sold with the salted
-          paste removed, wrapped in plastic, and vacuum packed. From the salt
-          curing process, the salted duck eggs have a briny aroma, a
-          gelatin-like egg white and a firm-textured, round yolk that is bright
-          orange-red in color.
-        </PostContent>
-      </div>
-      <NextPost>
-        <div className="next-post real-next">
-          precious post
-          <span>How To Encrypt on Linux</span>
-        </div>
-        <div className="next-post">
-          Next Post
-          <span>How To Add Route on Linux</span>
-        </div>
+          <NextPost>
+            <div className="next-post real-next">
+              {post.nextPost && post.nextPost.length
+                ? "previous post"
+                : "First Post"}
+              <span
+                onClick={(e) =>
+                  props.history.push(`/post/${post.prevPost._id}`)
+                }
+              >
+                {post.prevPost && post.prevPost.length
+                  ? post.prevPost[0].title
+                  : "Go To Blog Page"}
+              </span>
+            </div>
+            <div className="next-post">
+              {post.nextPost && post.nextPost.length
+                ? "Next Post"
+                : "Last Post"}
+              <span
+                onClick={(e) =>
+                  props.history.push(`/post/${post.nextPost._id}`)
+                }
+              >
+                {" "}
+                {post.nextPost && post.nextPost.length
+                  ? post.nextPost[0].title
+                  : "Go To Blog Page"}
+              </span>
+            </div>
 
-        <div></div>
-      </NextPost>
-    </PostContainer>
+            <div></div>
+          </NextPost>
+        </PostContainer>
+      )}
+    </React.Fragment>
   );
 }
 const PostContent = styled.div`
@@ -72,12 +110,17 @@ const PostTitle = styled.div`
   h2 {
     color: ${colors.main};
     font-size: calc(${sizes.medium} + 6px);
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     font-weight: bolder;
-    text-transform: none;
+    text-transform: uppercase;
   }
 `;
+//calc
 const PostContainer = styled.div`
   margin: 3rem 0;
+  .time-cont {
+    margin-right: 5px !important;
+  }
   .post-details {
     display: flex;
     width: 100%;

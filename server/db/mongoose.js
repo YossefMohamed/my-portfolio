@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+console.log(process.env.MONGODBURI);
 const connectDB = () => {
   mongoose
     .connect(process.env.MONGODBURI, {

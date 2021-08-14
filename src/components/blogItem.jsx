@@ -2,45 +2,46 @@ import React from "react";
 import styled from "styled-components";
 import colors from "../util/colors";
 import sizes from "../util/sizes";
+import Moment from "react-moment";
 import { Link } from "react-router-dom";
-function BlogItem() {
+function BlogItem({ post }) {
   return (
     <Card>
-      <div class="top">
-        <p class="category">Nature</p>
-        <img
-          src="https://w0.peakpx.com/wallpaper/609/467/HD-wallpaper-bugs-bunny-looney-tunes-cartoon-baseball.jpg"
-          alt="postImage"
-        />
-      </div>
+      <Link to={`/post/${post.id}`} className="top">
+        <p className="category">{post.tages[0].tag}</p>
+        <img src={`/images/${post.coverImage}`} alt={post.title} />
+      </Link>
 
-      <div class="bottom">
+      <div className="bottom">
         <h2>
-          <Link to="/post/123">React And Performance</Link>
+          <Link to={`/post/${post.id}`} className="title-link">
+            {post.title}
+          </Link>
         </h2>
 
-        <p class="intro">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-          consectetur mauris sed mauris sagittis, nec pretium metus posuere.{" "}
-        </p>
-        <div class="info">
+        <p className="intro">{post.brief}...</p>
+        <div className="info">
           <ion-icon name="time"></ion-icon>
-          <p class="info">2 days ago</p>
-          <ion-icon name="chatboxes"></ion-icon>
-          <p class="info">13 Views</p>
+          <p className="info">
+            {" "}
+            <Moment fromNow>{post.createdAt}</Moment>
+          </p>
         </div>
       </div>
     </Card>
   );
 }
 const Card = styled.div`
-  height: 500px;
+  height: 520px;
   width: 32%;
+  margin-right: 1.333333333333%;
   @media (max-width: 910px) {
     width: 48%;
+    margin-right: 0;
   }
   @media (max-width: 608px) {
     width: 100%;
+    margin-right: 0;
   }
   margin-bottom: 3rem;
   background-color: white;
@@ -50,7 +51,7 @@ const Card = styled.div`
   flex-direction: column;
 
   .top {
-    height: 52%;
+    min-height: 50%;
     width: 100%;
     position: relative;
     img {
@@ -58,33 +59,41 @@ const Card = styled.div`
       position: absolute;
       top: 0;
       left: 0;
-      height: 100%;
+      max-height: 100%;
       z-index: -99;
     }
   }
 
   .category {
-    background-color: #ff2e3a;
+    background-color: ${colors.secondary};
     width: 100px;
     height: 30px;
     color: white;
     z-index: 99;
-
+    padding: 0;
     text-transform: uppercase;
     display: flex;
     align-items: center;
+    justify-content: center;
+
     text-align: left;
-    font-size: 16px;
+    font-size: ${sizes.small};
     letter-spacing: 1px;
   }
 
   h2 {
-    padding: 22px 22px 0;
-    font-size: 1.3rem;
+    padding: 10px 0 0px 22px;
+    flex-grow: 1;
+
+    display: flex;
+    align-items: center;
+  }
+  .title-link {
+    font-size: calc(${sizes.medium} + -2px);
   }
 
   p {
-    font-size: 1rem;
+    font-size: calc(${sizes.small} + -2px);
     padding: 0 0 0 22px;
     line-height: 24px;
     margin: 0;
@@ -95,7 +104,7 @@ const Card = styled.div`
   }
 
   a:hover {
-    color: #ff2e3a;
+    color: ${colors.secondary};
     transition: 0.3s;
   }
 
@@ -112,13 +121,13 @@ const Card = styled.div`
 
   .name a {
     font-weight: 400;
-    color: #ff2e3a;
+    color: ${colors.secondary};
   }
 
   .info {
     display: flex;
     color: #999;
-    font-size: 14px;
+    font-size: calc(${sizes.small}-3px);
     margin-top: 8px;
     margin-bottom: 10px;
     padding-left: 0;

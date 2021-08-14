@@ -2,58 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import colors from "../util/colors";
 import sizes from "../util/sizes";
-import { Link } from "react-router-dom";
+import projects from "../util/projects";
 function Projects() {
-  const projects = [
-    {
-      picture: "/alink.png",
-      link: "https://alink-mern-socialapp.netlify.app/",
-      Title: "A link Social Media",
-      brief: "React , Redux , and Nodejs",
-    },
-    {
-      picture: "/leaf_shop.png",
-      link: "https://trusting-carson-643d6e.netlify.app/",
-      Title: "Leaf Shop",
-      brief: "React and Redux",
-    },
-    {
-      picture: "/phonix.png",
-      link: "https://lucid-lalande-60d860.netlify.app/",
-      Title: "Phonix",
-      brief: "HTML ,CSS and JQuery",
-    },
-    {
-      picture: "/groovy.png",
-      link: "https://github.com/YossefMohamed/e-learing-project",
-      Title: "Groovy E-Learning",
-      brief: "HTML , CSS and Javascript",
-    },
-    {
-      picture: "/activitar.png",
-      link: "https://cocky-chandrasekhar-97e16a.netlify.app/",
-      Title: "Activitar Gym",
-      brief: "HTML , CSS and JQuery",
-    },
-    {
-      picture: "/chat-app.png",
-      link: "https://github.com/YossefMohamed/chat-app",
-      Title: "Chat App API",
-      brief: "NodeJs , Prisma and GraphQl",
-    },
-    {
-      picture: "/metro.png",
-      link: "https://elastic-hoover-759d0d.netlify.app/",
-      Title: "Metro Gym",
-      brief: "HTML , CSS and Javascript",
-    },
-    {
-      picture: "/to-do.png",
-      link: "https://github.com/YossefMohamed/twinkle-to-do-social-app",
-      Title: "Twinkle To-do Api",
-      brief: "NodeJs and MongoDB",
-    },
-  ];
   return (
     <div id="projects">
       <Title>Projects 🏹</Title>
@@ -62,11 +12,16 @@ function Projects() {
           return (
             <ProjectItem id={idx}>
               <div className="project-title">
-                {project.Title}
+                <a href={project.link} target="_blank" rel="noreferrer">
+                  {project.Title}{" "}
+                </a>
+
                 <span>{project.brief}</span>
-              </div>
+              </div>{" "}
               <div className="project-image">
-                <img src={project.picture} alt={project.Title} />
+                <a href={project.link} target="_blank" rel="noreferrer">
+                  <img src={project.picture} alt={project.Title} />
+                </a>
               </div>
             </ProjectItem>
           );
@@ -132,7 +87,13 @@ const ProjectItem = styled.div`
     background-color: black;
     overflow: hidden;
     flex-grow: 1;
+    display: flex;
     position: relative;
+    height: 100%;
+
+    a {
+      flex-grow: 1;
+    }
     img {
       width: 100%;
       height: 100%;

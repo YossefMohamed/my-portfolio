@@ -29,48 +29,36 @@ function Experiance() {
               </div>
               <div className="xp-date">July 2020 - Present</div>
               <div className="xp-content">
-                The IT System Administrator has to design, organize, modify and
-                support the organization's computer systems. These professionals
-                have to upgrade and manage the software and hardware. The IT
-                System Administrator should handle any issues related to Local
-                Area Networks (LAN), Wide Area Networks, and Network segments.
+                sponsible for studying their employer’s current computer system,
+                identifying areas that need improvements or overhauls and
+                implementing these changes. They will need to be skilled in
+                assessment techniques and have the ability to design and install
+                any necessary upgrades to the system.
               </div>
             </div>
             <div className="xp-item">
-              <div className="xp-title">
-                CREATIVE TECHNOLOGIST CO-OP – Mullen Lowe U.S.
-              </div>
-              <div className="xp-date">July 2015 - Present</div>
-              Developed and maintained code for in-house and client websites
-              utilizing HTML5, CSS3, Javascript, jQuery, PHP, and Wordpress.
-              Tested front-end code in multiple browsers to ensure cross-browser
-              compatability. Coordinated closely with other developers and
-              digital producers to expedite projects. Clients included Lovesac,
-              U.S. Cellular, JetBlue, and more.
+              <div className="xp-title">Basketball Coach - Future Academy</div>
+              <div className="xp-date">May 2018 - Dec 2019</div>
+              creating strategies for the team, instructing the players, and
+              providing mentorship.having a solid knowledge of basketball and
+              its rules, be able to develop winning strategies
+            </div>
+            <div className="xp-item">
+              <div className="xp-title">FreeLance Web Developer</div>
+              <div className="xp-date">July 2019 - Present</div>
+              responsible for the coding, design and layout of a website
+              according to a company's specifications. As the role takes into
+              consideration user experience and function, a certain level of
+              both graphic design and computer programming is necessary.
             </div>
             <div className="xp-item">
               <div className="xp-title">
-                CREATIVE TECHNOLOGIST CO-OP – Mullen Lowe U.S.
+                Math Assistant Teacher – M.S. Acadamy
               </div>
-              <div className="xp-date">July 2015 - Present</div>
-              Developed and maintained code for in-house and client websites
-              utilizing HTML5, CSS3, Javascript, jQuery, PHP, and Wordpress.
-              Tested front-end code in multiple browsers to ensure cross-browser
-              compatability. Coordinated closely with other developers and
-              digital producers to expedite projects. Clients included Lovesac,
-              U.S. Cellular, JetBlue, and more.
-            </div>
-            <div className="xp-item">
-              <div className="xp-title">
-                CREATIVE TECHNOLOGIST CO-OP – Mullen Lowe U.S.
-              </div>
-              <div className="xp-date">July 2015 - Present</div>
-              Developed and maintained code for in-house and client websites
-              utilizing HTML5, CSS3, Javascript, jQuery, PHP, and Wordpress.
-              Tested front-end code in multiple browsers to ensure cross-browser
-              compatability. Coordinated closely with other developers and
-              digital producers to expedite projects. Clients included Lovesac,
-              U.S. Cellular, JetBlue, and more.
+              <div className="xp-date">Dec 2018 - June 2019</div>
+              conduct tutorials, grade assignments / quizzes as required by the
+              instructor, offering office hours and related academic support
+              activities such as proctoring exams.
             </div>
           </FlexContainer>
         </ScreenContainer>
@@ -119,7 +107,7 @@ const FlexContainer = styled.div`
     flex-direction: column;
     color: ${colors.light};
     border-left: 5px solid ${colors.light};
-    padding: 0rem 0rem 2.5rem 2rem;
+    padding: 0rem 0rem 4rem 2rem;
     position: relative;
     &::before {
       position: absolute;
@@ -137,7 +125,7 @@ const FlexContainer = styled.div`
     }
     .xp-title {
       font-size: ${sizes.medium};
-      transform: translateY(-1.35rem);
+      transform: translateY(-1rem);
       color: ${colors.light};
       font-weight: bold;
       @media (max-width: 768px) {
@@ -155,6 +143,7 @@ const FlexContainer = styled.div`
     }
     .xp-content {
       font-size: ${sizes.small};
+      flex-grow: 1;
       @media (max-width: 768px) {
         font-size: calc(${sizes.small} + -5px);
       }

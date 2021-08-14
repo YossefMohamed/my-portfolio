@@ -8,10 +8,38 @@ function Contact() {
   return (
     <ContactContainer id="content">
       <div className="social-links">
-        <div className="link">LinkedIn</div>
-        <div className="link">FaceBook</div>
-        <div className="link">Github</div>
-        <div className="link">Instagram</div>
+        <a
+          href="https://www.linkedin.com/in/yossef-mohamed-57996a181/"
+          className="link"
+          target="_blank"
+          rel="noreferrer"
+        >
+          LinkedIn
+        </a>{" "}
+        <a
+          href="https://github.com/YossefMohamed"
+          className="link"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Github
+        </a>
+        <a
+          href="https://www.facebook.com/yossef.mohamed.5095/"
+          className="link"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Facebook
+        </a>{" "}
+        <a
+          href="https://www.instagram.com/yossefmohamed29/"
+          className="link"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Instagram
+        </a>{" "}
       </div>
 
       <div className="mail-me">
@@ -19,7 +47,9 @@ function Contact() {
           {" "}
           Ready to take the next step and work together?
         </div>
-        <Button className="mail-me-button">CONTACT ME</Button>
+        <Button className="mail-me-button">
+          <a href="mailto:yossefmohamed112233@gmail.com">CONTACT ME</a>
+        </Button>
       </div>
     </ContactContainer>
   );
@@ -49,6 +79,16 @@ const ContactContainer = styled.div`
     }
     &-button {
       flex-basis: ${sizes.huge};
+      a {
+        color: ${colors.light};
+
+        display: block;
+      }
+      &:hover {
+        a {
+          color: ${colors.secondary};
+        }
+      }
     }
   }
   .social-links {

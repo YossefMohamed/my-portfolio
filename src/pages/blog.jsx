@@ -3,48 +3,80 @@ import styled from "styled-components";
 import BlogItem from "../components/blogItem";
 import colors from "../util/colors";
 import sizes from "../util/sizes";
-import "./blog.css";
-function Blog() {
-  return (
-    <BlogContainer>
-      <BlogTitle>
-        <span>Articles</span> 📝
-      </BlogTitle>
-      <BlogDescribtion>
-        <div className="blog-tages">
-          <span>All</span>
-          <span>#HTML</span>
-          <span>#JS</span>
-          <span>#GraphQL</span>
-          <span>#React</span>
-          <span>#Node</span> <span>#HTML</span>
-          <span>#JS</span>
-          <span>#GraphQL</span>
-          <span>#React</span>
-          <span>#Node</span> <span>#HTML</span>
-          <span>#JS</span>
-          <span>#GraphQL</span>
-          <span>#React</span>
-          <span>#Node</span> <span>#HTML</span>
-          <span>#JS</span>
-          <span>#GraphQL</span>
-          <span>#React</span>
-          <span>#Node</span>
-        </div>
-      </BlogDescribtion>
+import { useDispatch, useSelector } from "react-redux";
 
-      <div className="postsContainer">
-        <BlogItem />
-        <BlogItem />
-        <BlogItem />
-        <BlogItem />
-        <BlogItem />
-        <BlogItem />
-      </div>
-      <Paginate />
-    </BlogContainer>
+import "./blog.css";
+import { getPosts, NumberOfPages } from "../actions/postActions";
+import { getTages } from "../actions/tagActions";
+import LoaderComponent from "../components/loader";
+function Blog({ history, match }) {
+  const dispatch = useDispatch();
+  const tagBlog = match.params.tag ? match.params.tag : "all";
+  React.useEffect(() => {
+    dispatch(NumberOfPages());
+    dispatch(getTages());
+    dispatch(getPosts(1, tagBlog));
+  }, [, match.params]);
+  const { tages } = useSelector((state) => state.getTagesReducer);
+  const { posts } = useSelector((state) => state.getPostsReducer);
+  const loader = useSelector((state) => state.getPostsReducer.loading);
+  return (
+    <React.Fragment>
+      {loader ? (
+        <LoaderContainer>
+          <LoaderComponent />
+        </LoaderContainer>
+      ) : (
+        <BlogContainer>
+          <BlogTitle>
+            <span>Articles</span> 📝
+          </BlogTitle>
+          <BlogDescribtion>
+            <div className="blog-tages">
+              <span
+                onClick={(e) => history.push("/blog")}
+                style={{
+                  backgroundColor: `${
+                    tagBlog === "all" && "rgba(0, 0, 0, 0.07)"
+                  }`,
+                  color: `${tagBlog === "all" && "white !important"}`,
+                }}
+              >
+                All
+              </span>
+              {tages.map((tag, idx) => (
+                <span
+                  id={idx}
+                  onClick={(e) => history.push("/blog/" + tag)}
+                  style={{
+                    backgroundColor: `${
+                      match.params.tag === tag && "rgba(0, 0, 0, 0.07)"
+                    }`,
+                    color: `${match.params.tag === tag && "white !important"}`,
+                  }}
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          </BlogDescribtion>
+
+          <div className="postsContainer">
+            {posts.map((post, idx) => (
+              <BlogItem post={post} id={idx} />
+            ))}
+          </div>
+          <Paginate />
+        </BlogContainer>
+      )}
+    </React.Fragment>
   );
 }
+export const LoaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  min-height: 80vh;
+`;
 const BlogDescribtion = styled.div`
   margin: 3rem 0;
   h3 {
@@ -67,6 +99,13 @@ const BlogDescribtion = styled.div`
     /* background-color: red; */
   }
   .blog-tages {
+    span {
+      cursor: pointer;
+      opacity: 0.85;
+      &:hover {
+        opacity: 1;
+      }
+    }
     width: 100%;
     align-items: center;
     justify-content: flex-start;
@@ -77,10 +116,6 @@ const BlogDescribtion = styled.div`
     color: ${colors.light};
     filter: brightness(60%);
     span {
-      &:first-child {
-        background-color: rgba(0, 0, 0, 0.07);
-        color: white !important;
-      }
       margin: 5px 0;
       /* border-radius: 10px; */
       flex-wrap: nowrap;
@@ -103,7 +138,13 @@ const BlogContainer = styled.div`
   .postsContainer {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
+    @media (max-width: 910px) {
+      justify-content: space-between;
+    }
+    @media (max-width: 608px) {
+      justify-content: space-between;
+    }
   }
 `;
 const BlogTitle = styled.div`
@@ -113,9 +154,11 @@ const BlogTitle = styled.div`
 `;
 
 function Paginate() {
-  const [currentPage, setCurrentPage] = React.useState(4);
-  let maxPages = 10;
+  const [currentPage, setCurrentPage] = React.useState(1);
+
+  let maxPages = useSelector((state) => state.numberOfPagesReducer.pages);
   let items = [];
+  const dispatch = useDispatch();
   let leftSide = currentPage - 2;
   if (leftSide <= 0) leftSide = 1;
   let rightSide = currentPage + 2;
@@ -129,6 +172,7 @@ function Paginate() {
         }
         onClick={() => {
           setCurrentPage(number);
+          dispatch(getPosts(1, "all"));
         }}
       >
         {number}

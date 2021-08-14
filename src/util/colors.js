@@ -1,6 +1,6 @@
 const colors = {
   main: "black",
-  secondary: "#ff2e3a",
+  secondary: "#FD223E",
   light: "white",
 };
 

@@ -30,6 +30,36 @@ function Skills() {
         </SkillItem>
         <SkillItem>
           <h2>
+            <span class="iconify" data-icon="simple-icons:graphql"></span>
+          </h2>
+          <div className="skill-content">
+            Lorem Ipsum is simply dummy teext of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever
+          </div>
+        </SkillItem>{" "}
+        <SkillItem>
+          <h2>
+            <span class="iconify" data-icon="bx:bxl-c-plus-plus"></span>
+          </h2>
+          <div className="skill-content">
+            Lorem Ipsum is simply dummy teext of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever
+          </div>
+        </SkillItem>
+        <SkillItem>
+          <h2>
+            <span class="iconify" data-icon="dashicons:database"></span>{" "}
+          </h2>
+          <div className="skill-content">
+            Lorem Ipsum is simply dummy teext of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever
+          </div>
+        </SkillItem>{" "}
+        <SkillItem>
+          <h2>
             <i className="fab fa-react"></i>
           </h2>
           <div className="skill-content">

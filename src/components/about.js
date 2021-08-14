@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import sizes from "../util/sizes";
 import colors from "./../util/colors";
+import axios from "axios";
 function About() {
   return (
     <ScreenDiv id="about">
@@ -17,7 +18,9 @@ function About() {
           I Love Working With Modern Technologies, Building Awesome Projects. I
           Prefer Write Your Functionality Requirements..
         </Hello>
-        <Button>Download my resume</Button>
+        <Button onClick={(e) => axios.get("/resume")}>
+          Download my resume
+        </Button>
       </div>
     </ScreenDiv>
   );
