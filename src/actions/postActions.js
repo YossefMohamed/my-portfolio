@@ -5,6 +5,7 @@ export const getPosts = (page, tag) => async (dispatch) => {
     dispatch({
       type: "GET_POSTS_REQUEST",
     });
+    console.log(tag);
     if (tag !== "all") {
       var { data } = await axios.get("/api/post/tag/" + tag);
     } else {

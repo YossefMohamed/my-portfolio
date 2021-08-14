@@ -17,13 +17,35 @@ function Blog({ history, match, location }) {
   );
 
   React.useEffect(() => {
-    setPage(location.hash.substring(1));
+    setPage(location.hash ? location.hash.substring(1) : 1);
+
     dispatch(NumberOfPages());
     dispatch(getTages());
-    dispatch(getPosts(1, tagBlog));
-  }, [, match.params]);
+    dispatch(getPosts(page, tagBlog));
+  }, [match, location.hash, page]);
+
   const { tages } = useSelector((state) => state.getTagesReducer);
-  const { posts } = useSelector((state) => state.getPostsReducer);
+  const postsArr = useSelector((state) => state.getPostsReducer.posts);
+  const [posts, setPosts] = React.useState([]);
+  React.useEffect(() => {
+    setPage(location.hash ? location.hash.substring(1) : 1);
+
+    dispatch(getPosts(page, tagBlog));
+    setPosts(postsArr);
+    return () => {
+      setPosts([]);
+    };
+  }, []);
+  React.useEffect(() => {
+    dispatch(getPosts(page, tagBlog));
+  }, [page]);
+  React.useEffect(() => {
+    setPosts(postsArr);
+  }, [postsArr]);
+  React.useEffect(() => {
+    setPage(location.hash ? location.hash.substring(1) : 1);
+  }, [location]);
+
   const loader = useSelector((state) => state.getPostsReducer.loading);
   return (
     <React.Fragment>
@@ -158,9 +180,10 @@ const BlogTitle = styled.div`
   color: ${colors.main};
 `;
 
-function Paginate({ page }) {
+function Paginate(props) {
   const history = useHistory();
-  const [currentPage, setCurrentPage] = React.useState(page);
+
+  const [currentPage, setCurrentPage] = React.useState(1 * props.page);
 
   let maxPages = useSelector((state) => state.numberOfPagesReducer.pages);
   let items = [];
