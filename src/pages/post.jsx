@@ -19,7 +19,7 @@ function PostPage(props) {
       props.history.push("/blog");
     }
     dispatch(getPost(props.match.params.id));
-  }, []);
+  }, [props.match]);
   if (post.id) {
     if (`${post.id}` !== `${props.match.params.id}`) {
       props.history.push("/notfound");
@@ -66,7 +66,7 @@ function PostPage(props) {
                 : "First Post"}
               <span
                 onClick={(e) =>
-                  props.history.push(`/post/${post.prevPost._id}`)
+                  props.history.push(`/post/${post.prevPost[0]._id}`)
                 }
               >
                 {post.prevPost && post.prevPost.length
@@ -80,7 +80,7 @@ function PostPage(props) {
                 : "Last Post"}
               <span
                 onClick={(e) =>
-                  props.history.push(`/post/${post.nextPost._id}`)
+                  props.history.push(`/post/${post.nextPost[0]._id}`)
                 }
               >
                 {" "}
