@@ -11,40 +11,43 @@ import { getTages } from "../actions/tagActions";
 import LoaderComponent from "../components/loader";
 function Blog({ history, match, location }) {
   const dispatch = useDispatch();
+  let maxNumberOfPages = useSelector(
+    (state) => state.numberOfPagesReducer.pages
+  );
+
   const tagBlog = match.params.tag ? match.params.tag : "all";
   const [page, setPage] = React.useState(
     location.hash ? location.hash.substring(1) : 1
   );
 
   React.useEffect(() => {
-    setPage(location.hash ? location.hash.substring(1) : 1);
-
-    dispatch(NumberOfPages());
+    dispatch(NumberOfPages("all"));
     dispatch(getTages());
-    dispatch(getPosts(page, tagBlog));
-  }, [match, location.hash, page]);
+    setPosts([]);
+    if (tagBlog !== "all") {
+      dispatch(getPosts(page, tagBlog));
+    }
+  }, [match]);
 
   const { tages } = useSelector((state) => state.getTagesReducer);
   const postsArr = useSelector((state) => state.getPostsReducer.posts);
   const [posts, setPosts] = React.useState([]);
   React.useEffect(() => {
-    setPage(location.hash ? location.hash.substring(1) : 1);
-
-    dispatch(getPosts(page, tagBlog));
+    if (page > maxNumberOfPages) history.push("/404-not-found");
+    dispatch(getPosts(location.hash ? location.hash.substring(1) : 1, tagBlog));
     setPosts(postsArr);
-    return () => {
-      setPosts([]);
-    };
   }, []);
   React.useEffect(() => {
+    setPosts([]);
+    if (page > maxNumberOfPages) history.push("/404-not-found");
+
+    history.push("/blog#" + page);
+
     dispatch(getPosts(page, tagBlog));
   }, [page]);
   React.useEffect(() => {
     setPosts(postsArr);
   }, [postsArr]);
-  React.useEffect(() => {
-    setPage(location.hash ? location.hash.substring(1) : 1);
-  }, [location]);
 
   const loader = useSelector((state) => state.getPostsReducer.loading);
   return (
@@ -93,7 +96,7 @@ function Blog({ history, match, location }) {
               <BlogItem post={post} id={idx} />
             ))}
           </div>
-          <Paginate page={page} />
+          {tagBlog === "all" && <Paginate page={page} setPage={setPage} />}
         </BlogContainer>
       )}
     </React.Fragment>
@@ -200,7 +203,7 @@ function Paginate(props) {
         }
         onClick={() => {
           setCurrentPage(number);
-          history.push("/blog#" + number);
+          props.setPage(number);
         }}
       >
         {number}
@@ -210,12 +213,13 @@ function Paginate(props) {
   const nextPage = () => {
     if (currentPage < maxPages) {
       setCurrentPage(currentPage + 1);
+      props.setPage(currentPage + 1);
     }
   };
 
   const prevPage = () => {
     if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+      props.setPage(currentPage - 1);
     }
   };
 

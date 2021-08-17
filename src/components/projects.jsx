@@ -3,11 +3,17 @@ import styled from "styled-components";
 import colors from "../util/colors";
 import sizes from "../util/sizes";
 import projects from "../util/projects";
+
+import { motion } from "framer-motion";
 function Projects() {
   return (
     <div id="projects">
-      <Title>Projects 🏹</Title>
-      <ProjectsContainer>
+      <Title >Projects 🏹</Title>
+      <ProjectsContainer
+        animate={{ x: 0, opacity: 1 }}
+        initial={{ x: 1000, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 1000000 }}
+      >
         {projects.map((project, idx) => {
           return (
             <ProjectItem id={idx}>
@@ -31,7 +37,7 @@ function Projects() {
   );
 }
 
-const Title = styled.h2`
+const Title = styled(motion.h2)`
   text-align: left;
   margin: 1rem 0 3rem;
   font-size: ${sizes.huge};
@@ -52,7 +58,7 @@ const ProjectsContainer = styled.div`
     padding: 0;
   }
 `;
-const ProjectItem = styled.div`
+const ProjectItem = styled(motion.div)`
   width: 47%;
   margin: 3rem 0;
   height: 25rem;

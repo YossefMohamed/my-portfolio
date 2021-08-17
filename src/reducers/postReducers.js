@@ -23,7 +23,7 @@ export const getPostsReducer = (
 ) => {
   switch (action.type) {
     case "GET_POSTS_REQUEST":
-      return { ...state, loading: true };
+      return { ...state, loading: true, posts: [] };
     case "GET_POSTS_DONE":
       return { ...state, loading: false, posts: action.payload };
     default:
@@ -36,7 +36,7 @@ export const getPostReducer = (
 ) => {
   switch (action.type) {
     case "GET_POST_REQUEST":
-      return { ...state, loading: true };
+      return { ...state, loading: true, post: {} };
     case "GET_POST_DONE":
       return { ...state, loading: false, post: action.payload };
     default:

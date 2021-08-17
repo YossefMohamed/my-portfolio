@@ -3,9 +3,22 @@ import styled from "styled-components";
 import sizes from "../util/sizes";
 import colors from "./../util/colors";
 import axios from "axios";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
 function About() {
+  const [ref, InView] = useInView({
+    threshold: 0,
+  });
+
   return (
-    <ScreenDiv id="about">
+    <ScreenDiv
+      ref={ref}
+      id="about"
+      animate={{ x: 0, opacity: 1 }}
+      initial={{ x: -1000, opacity: 0 }}
+      transition={{ type: "spring", stiffness: 10000000 }}
+    >
       <div>
         <Hello>
           Hi, I'm <span>Yossef Mohamed</span> 👋
@@ -26,7 +39,7 @@ function About() {
   );
 }
 
-const ScreenDiv = styled.div`
+const ScreenDiv = styled(motion.div)`
   min-height: 60vh;
   display: flex;
   align-items: center;

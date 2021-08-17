@@ -11,20 +11,21 @@ import ReactMarkdown from "react-markdown";
 
 function PostPage(props) {
   const dispatch = useDispatch();
+  const loader = useSelector((state) => state.getPostReducer.loading);
+  const { post } = useSelector((state) => state.getPostReducer);
+
   React.useEffect(() => {
     if (!props.match.params.id) {
       props.history.push("/blog");
     }
     dispatch(getPost(props.match.params.id));
   }, []);
-  const loader = useSelector((state) => state.getPostReducer.loading);
-  const { post } = useSelector((state) => state.getPostReducer);
-  React.useEffect(() => {
-    if (!loader && !post._id) {
+  if (post.id) {
+    if (`${post.id}` !== `${props.match.params.id}`) {
       props.history.push("/notfound");
-      console.log(loader, post);
     }
-  }, [post]);
+  }
+
   return (
     <React.Fragment>
       {loader ? (

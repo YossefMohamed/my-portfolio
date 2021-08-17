@@ -17,7 +17,7 @@ router.post("/upload/:post", upload.single("image"), async (req, res) => {
   try {
     if (!req.file) res.status(400).send("PLease upload an image !!");
     req.file.filename = `post-${req.params.post}.jpeg`;
-    // console.log(req.params);
+    console.log(req.params);
     sharp(req.file.buffer)
       .resize(600, 400)
       .toFormat("jpeg")
@@ -45,28 +45,31 @@ router.get("/pages", async (req, res) => {
   });
 });
 router.get("/:id", async (req, res) => {
-  const { id } = req.params;
-  let post = await Post.findById(id);
-  let prevPost = await await Post.find({ _id: { $gt: id } })
-    .sort({ _id: -1 })
-    .limit(1);
-  let nextPost = await Post.find({ _id: { $lt: id } })
-    .sort({ _id: 1 })
-    .limit(1);
-  if (!post)
+  try {
+    const { id } = req.params;
+    let post = await Post.findById(id);
+    let prevPost = await await Post.find({ _id: { $gt: id } })
+      .sort({ _id: -1 })
+      .limit(1);
+    let nextPost = await Post.find({ _id: { $lt: id } })
+      .sort({ _id: 1 })
+      .limit(1);
+    if (!post) throw new Error();
+
+    res.status(200).json({
+      status: "ok",
+      post: {
+        ...post._doc,
+        nextPost,
+        prevPost,
+      },
+    });
+  } catch (error) {
     res.status(404).json({
       status: "failed",
       message: "Post Not Found",
     });
-
-  res.status(200).json({
-    status: "ok",
-    post: {
-      ...post._doc,
-      nextPost,
-      prevPost,
-    },
-  });
+  }
 });
 
 router.get("/page/:page", async (req, res) => {
@@ -94,7 +97,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  console.log("sss");
+  // console.log("sss");
   const { title, content, tages } = req.body;
 
   const post = await Post.create({
@@ -148,7 +151,7 @@ router.get("/tag/:tag", async (req, res) => {
         posts.push(item.post);
       }
     });
-    // console.log(posts);
+    console.log(posts);
     res.status(200).send({ status: "ok", posts });
   } catch (error) {
     res.status(404).json({

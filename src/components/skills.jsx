@@ -2,100 +2,151 @@ import React from "react";
 import styled from "styled-components";
 import colors from "../util/colors";
 import sizes from "../util/sizes";
+import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
+
 function Skills() {
+  const [ref, InView] = useInView({
+    threshold: 0,
+  });
   return (
-    <SkillScreen id="skills">
+    <SkillScreen id="skills" ref={ref}>
       <h1>Skills 👨‍💻</h1>
 
       <FlexContainer>
-        <SkillItem>
+        <SkillItem
+          animate={InView && { x: 0, opacity: 1 }}
+          initial={{ x: -1000, opacity: 0 }}
+          transition={{ type: "spring", stiffness: 10000000 }}
+        >
+          {" "}
           <h2>
             <i className="fab fa-html5"></i>
           </h2>
           <div className="skill-content">
-            Lorem Ipsum is simply dummy teext of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever
+            HTML is the standard markup language for Web pages. With HTML you
+            can create your own Website.
           </div>
         </SkillItem>
-        <SkillItem>
+        <SkillItem
+          ref={ref}
+          animate={InView && { x: 0, opacity: 1 }}
+          initial={{ x: -1000, opacity: 0 }}
+          transition={{ type: "spring", stiffness: 10000000 }}
+        >
+          {" "}
           <h2>
             <i className="fab fa-css3-alt"></i>
           </h2>
           <div className="skill-content">
-            Lorem Ipsum is simply dummy teext of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever
+            CSS is the language we use to style an HTML document.CSS describes
+            how HTML elements should be displayed.
           </div>
         </SkillItem>
-        <SkillItem>
+        <SkillItem
+          ref={ref}
+          animate={InView && { x: 0, opacity: 1 }}
+          initial={{ x: -1000, opacity: 0 }}
+          transition={{ type: "spring", stiffness: 10000000 }}
+        >
+          {" "}
           <h2>
             <span class="iconify" data-icon="simple-icons:graphql"></span>
           </h2>
           <div className="skill-content">
-            Lorem Ipsum is simply dummy teext of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever
+            A query language for APIs and a runtime for fulfilling those queries
+            with your existing data,It's used to building Graph Api
           </div>
         </SkillItem>{" "}
-        <SkillItem>
+        <SkillItem
+          ref={ref}
+          animate={InView && { x: 0, opacity: 1 }}
+          initial={{ x: -1000, opacity: 0 }}
+          transition={{ type: "spring", stiffness: 10000000 }}
+        >
+          {" "}
           <h2>
             <span class="iconify" data-icon="bx:bxl-c-plus-plus"></span>
           </h2>
           <div className="skill-content">
-            Lorem Ipsum is simply dummy teext of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever
+            C++ is a powerful general-purpose programming language. It can be
+            used to develop operating systems, browsers, games,
           </div>
         </SkillItem>
-        <SkillItem>
+        <SkillItem
+          ref={ref}
+          animate={InView && { x: 0, opacity: 1 }}
+          initial={{ x: -1000, opacity: 0 }}
+          transition={{ type: "spring", stiffness: 10000000 }}
+        >
+          {" "}
           <h2>
             <span class="iconify" data-icon="dashicons:database"></span>{" "}
           </h2>
           <div className="skill-content">
-            Lorem Ipsum is simply dummy teext of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever
+            A database is an organized collection of structured information
+            There're two types NoSql "MonoDB" or SQL "MySQl"
           </div>
         </SkillItem>{" "}
-        <SkillItem>
+        <SkillItem
+          ref={ref}
+          animate={InView && { x: 0, opacity: 1 }}
+          initial={{ x: -1000, opacity: 0 }}
+          transition={{ type: "spring", stiffness: 10000000 }}
+        >
+          {" "}
           <h2>
             <i className="fab fa-react"></i>
           </h2>
           <div className="skill-content">
-            Lorem Ipsum is simply dummy teext of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever
+            React is a JavaScript library for building user interfaces. React is
+            used to build single page applications. React is to create reusable
+            UI.
           </div>
         </SkillItem>
-        <SkillItem>
+        <SkillItem
+          ref={ref}
+          animate={InView && { x: 0, opacity: 1 }}
+          initial={{ x: -1000, opacity: 0 }}
+          transition={{ type: "spring", stiffness: 10000000 }}
+        >
+          {" "}
           <h2>
             <i className="fab fa-js"></i>
           </h2>
           <div className="skill-content">
-            Lorem Ipsum is simply dummy teext of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever
+            JavaScript (JS) is a lightweight, interpreted, or just-in-time
+            compiled programming language with first-class functions.
           </div>
         </SkillItem>
-        <SkillItem>
+        <SkillItem
+          ref={ref}
+          animate={InView && { x: 0, opacity: 1 }}
+          initial={{ x: -1000, opacity: 0 }}
+          transition={{ type: "spring", stiffness: 10000000 }}
+        >
+          {" "}
           <h2>
             <i className="fab fa-node"></i>
           </h2>
           <div className="skill-content">
-            Lorem Ipsum is simply dummy teext of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever
+            Node.js is an open source server environment. Node.js allows you to
+            run JavaScript on the server.
           </div>
         </SkillItem>
-        <SkillItem>
+        <SkillItem
+          ref={ref}
+          animate={InView && { x: 0, opacity: 1 }}
+          initial={{ x: -1000, opacity: 0 }}
+          transition={{ type: "spring", stiffness: 10000000 }}
+        >
+          {" "}
           <h2>
             <i className="fab fa-python"></i>{" "}
           </h2>
           <div className="skill-content">
-            Lorem Ipsum is simply dummy teext of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever
+            Python is a powerful programming language used in a variety of
+            professions, ranging from data science to web development.
           </div>
         </SkillItem>
       </FlexContainer>
@@ -127,7 +178,7 @@ const FlexContainer = styled.div`
   justify-content: space-between;
 `;
 
-const SkillItem = styled.div`
+const SkillItem = styled(motion.div)`
   display: flex;
   flex-direction: column;
   /* border-radius: 5px; */
@@ -164,7 +215,7 @@ const SkillItem = styled.div`
   flex-shrink: 0; */
   h2 {
     font-size: calc(${sizes.huge} + ${sizes.medium});
-    padding: 1rem;
+    padding: 0.5rem;
     color: ${colors.light};
   }
 `;
