@@ -56,7 +56,7 @@ function PostPage(props) {
               <div className="date"> </div>
             </div>
             <PostContent>
-              {<ReactMarkdown>{`${post.content}`}</ReactMarkdown>}
+              <ReactMarkdown>{`${post.content}`}</ReactMarkdown>
             </PostContent>
           </div>
           <NextPost>
@@ -100,9 +100,7 @@ function PostPage(props) {
 const PostContent = styled.div`
   font-size: calc(${sizes.big} + -5px);
   color: ${colors.main};
-  &::first-letter {
-    font-size: ${sizes.huge};
-  }
+
   line-height: 200%;
 
   /* margin: 5rem 0; */
