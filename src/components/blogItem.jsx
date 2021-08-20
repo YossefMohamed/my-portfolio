@@ -60,7 +60,8 @@ const Card = styled.div`
 
   .top {
     min-height: 50%;
-    width: 100%;
+    width: 100%;    border: 0.5px solid rgba(0, 0, 0, 0.1);
+
     position: relative;
     img {
       width: 100%;

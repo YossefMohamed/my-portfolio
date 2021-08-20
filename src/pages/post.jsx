@@ -98,18 +98,21 @@ function PostPage(props) {
   );
 }
 const PostContent = styled.div`
-  font-size: calc(${sizes.medium});
+  font-size: ${sizes.medium};
   color: ${colors.main};
-font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: 'Roboto';
   line-height: 350%;
-  font-weight : 400;
+  font-weight : 550;
+  overflow:hidden;
 
   /* margin: 5rem 0; */
 `;
 const PostTitle = styled.div`
   h2 {
+      font-size: ${sizes.huge};
+
     color: ${colors.main};
-    font-size: calc(${sizes.medium} + 12px);
+font-family: 'Open Sans Condensed', sans-serif;
     /* font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; */
     font-weight: bolder;
     text-transform: uppercase;

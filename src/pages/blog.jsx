@@ -17,13 +17,17 @@ function Blog({ history, match, location }) {
 
   const tagBlog = match.params.tag ? match.params.tag : "all";
   const [page, setPage] = React.useState(
-    location.hash ? location.hash.substring(1) : 1
   );
-
+  
+  React.useEffect(()=>{
+    setPage(    location.hash ? location.hash.substring(1) : 1
+)
+  },[location])
   React.useEffect(() => {
     dispatch(NumberOfPages("all"));
     dispatch(getTages());
     setPosts([]);
+
     if (tagBlog !== "all") {
       dispatch(getPosts(page, tagBlog));
     }
@@ -33,6 +37,8 @@ function Blog({ history, match, location }) {
   const postsArr = useSelector((state) => state.getPostsReducer.posts);
   const [posts, setPosts] = React.useState([]);
   React.useEffect(() => {
+        setPage(    location.hash ? location.hash.substring(1) : 1
+        );
     if (page > maxNumberOfPages) history.push("/404-not-found");
     dispatch(getPosts(location.hash ? location.hash.substring(1) : 1, tagBlog));
     setPosts(postsArr);
