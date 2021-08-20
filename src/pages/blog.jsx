@@ -76,7 +76,7 @@ function Blog({ history, match, location }) {
               </span>
               {tages.map((tag, idx) => (
                 <span
-                  id={idx}
+                  key={idx}
                   onClick={(e) => history.push("/blog/" + tag)}
                   style={{
                     backgroundColor: `${
@@ -93,7 +93,7 @@ function Blog({ history, match, location }) {
 
           <div className="postsContainer">
             {posts.map((post, idx) => (
-              <BlogItem post={post} id={idx} />
+              <BlogItem post={post} key={idx} />
             ))}
           </div>
           {tagBlog === "all" && <Paginate page={page} setPage={setPage} />}

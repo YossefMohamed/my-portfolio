@@ -4,6 +4,9 @@ import colors from "../util/colors";
 import sizes from "../util/sizes";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
+import removeMarkdown from "markdown-to-text";
+
+
 function BlogItem({ post }) {
   return (
     <Card>
@@ -19,7 +22,12 @@ function BlogItem({ post }) {
           </Link>
         </h2>
 
-        <p className="intro">{post.brief}...</p>
+        <p className="intro">     
+        
+        {removeMarkdown(post.brief).replaceAll("#", "").replaceAll("]", "")
+        .replaceAll("-", " ").replaceAll("(", "")
+        .replaceAll(")", "").replaceAll("[", "")}
+              ...</p>
         <div className="info">
           <ion-icon name="time"></ion-icon>
           <p className="info">
@@ -101,6 +109,7 @@ const Card = styled.div`
 
   .intro {
     width: 100%;
+    padding : 0 22px;
   }
 
   a:hover {

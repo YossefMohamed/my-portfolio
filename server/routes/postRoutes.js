@@ -21,7 +21,7 @@ router.post("/upload/:post", upload.single("image"), async (req, res) => {
     sharp(req.file.buffer)
       .resize(600, 400)
       .toFormat("jpeg")
-      .jpeg({ quality: 85 })
+      .jpeg({ quality: 95 })
       .toFile(`public/images/${req.file.filename}`);
     const post = await Post.findById(req.params.post);
     post.coverImage = req.file.filename;

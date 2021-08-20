@@ -24,7 +24,7 @@ function PostPage(props) {
     if (`${post.id}` !== `${props.match.params.id}`) {
       props.history.push("/notfound");
     }
-  }
+  }var md = "";
 
   return (
     <React.Fragment>
@@ -56,7 +56,7 @@ function PostPage(props) {
               <div className="date"> </div>
             </div>
             <PostContent>
-              <ReactMarkdown>{`${post.content}`}</ReactMarkdown>
+              <ReactMarkdown>{post.content}</ReactMarkdown>
             </PostContent>
           </div>
           <NextPost>
@@ -98,18 +98,19 @@ function PostPage(props) {
   );
 }
 const PostContent = styled.div`
-  font-size: calc(${sizes.big} + -5px);
+  font-size: calc(${sizes.medium});
   color: ${colors.main};
-
-  line-height: 200%;
+font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 350%;
+  font-weight : 400;
 
   /* margin: 5rem 0; */
 `;
 const PostTitle = styled.div`
   h2 {
     color: ${colors.main};
-    font-size: calc(${sizes.medium} + 6px);
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-size: calc(${sizes.medium} + 12px);
+    /* font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; */
     font-weight: bolder;
     text-transform: uppercase;
   }
@@ -139,7 +140,7 @@ const PostContainer = styled.div`
     }
   }
   .post-content {
-    margin: 4rem 0;
+    margin: 4rem 10px;
   }
 `;
 
